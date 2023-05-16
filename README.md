@@ -6,12 +6,19 @@ Repo that will serve as the code base for our Java application.
 
 Student.java
 
-ArtStudent.java | MedStudent.java **implements** Student.java
+ArtStudent.java | MedStudent.java | StemStudent.java **implements** Student.java
 
 Prize.java
 
-Result.java
+Topic.java
 
+### Object Relationships
+
+Each degree has its own object of Student (ArtStudent.java | MedStudent.java | StemStudent.java)
+
+Each Student object has an array of Topic objects
+
+A MedStudent has an array of up to 10 Prize objects
 
 ### Student variables
 
@@ -47,7 +54,7 @@ String prizeTopic
 int minAttempt
 
 
-### Result.java
+### Topic.java
 
 String topicCode (8 characters)
 

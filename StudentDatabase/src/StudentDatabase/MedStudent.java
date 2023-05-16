@@ -23,4 +23,6 @@ public class MedStudent extends Student {
         super.printStudent();
         System.out.println("Prize:    " + WordUtils.capitalizeFully(prize));
     }
+
+
 }

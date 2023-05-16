@@ -35,5 +35,33 @@ public class Student {
                 "\nDegree:   " + WordUtils.capitalizeFully(degree));
     }
 
+    public String getFamilyName() {
+        return familyName;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
+
+    public String getGivenName() {
+        return givenName;
+    }
+
+    public void setGivenName(String givenName) {
+        this.givenName = givenName;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    public int getStudentNum() {
+        return studentNum;
+    }
+
 }
 
