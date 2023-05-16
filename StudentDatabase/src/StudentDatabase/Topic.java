@@ -29,6 +29,7 @@ public class Topic {
         this.topicCode.append(newTopicCode); // TO DO: Add a check to make sure newTopicCode is 8 Char
 
         this.grade = Grade.valueOf(newGrade); // TO DO: Add a check to make sure newGrade is 2 Char
+                                                // !! This will fail the enum check at least, maybe add a handle
     }
 
     // Constructor to handle optional marks variable

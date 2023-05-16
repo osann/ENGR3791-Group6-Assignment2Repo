@@ -2,6 +2,7 @@ package StudentDatabase;
 
 // Imports
 import org.apache.commons.text.WordUtils;
+import java.util.ArrayList;
 
 public class Student {
 
@@ -11,8 +12,12 @@ public class Student {
     protected String givenName;
     protected String degree;
 
+    // Topic Variables
+    ArrayList<Topic> topicArrayList = new ArrayList<Topic>();
+
     public Student() {
         // Throw an error?
+        // Needed this for some reason
 
     }
 
