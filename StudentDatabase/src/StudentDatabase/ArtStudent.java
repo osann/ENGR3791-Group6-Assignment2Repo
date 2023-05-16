@@ -7,9 +7,12 @@ package StudentDatabase;
 import org.apache.commons.text.WordUtils;
 
 public class ArtStudent extends Student {
+
+    // Variables
     protected String major;
     protected String minor;
 
+    // Constructor
     public ArtStudent (int newStudentNum,
                        String newFamilyName,
                        String newGivenName,
@@ -21,6 +24,7 @@ public class ArtStudent extends Student {
         this.minor = newMinor.toLowerCase();
     }
 
+    // Class functions
     @Override
     public void printStudent() {
         super.printStudent();
@@ -28,6 +32,8 @@ public class ArtStudent extends Student {
                 "Major:    " + WordUtils.capitalizeFully(major) +
                 "\nMinor:    " + WordUtils.capitalizeFully(minor));
     }
+
+    // Getters/Setters
 
     public String getMinor() {
         return minor;

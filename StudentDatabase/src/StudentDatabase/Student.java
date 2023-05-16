@@ -1,22 +1,22 @@
 package StudentDatabase;
 
 // Imports
-import org.apache.commons.text.*;
-
-// Authors: Jack Harris,
-
-import static java.lang.Character.toLowerCase;
+import org.apache.commons.text.WordUtils;
 
 public class Student {
-    protected int studentNum;
+
+    // Variables
+    protected int studentNum; // Maybe change this to StringBuilder or String?
     protected String familyName;
     protected String givenName;
     protected String degree;
 
     public Student() {
+        // Throw an error?
 
     }
 
+    // Constructor
     public Student(
             int newStudentNum,
             String newFamilyName,
@@ -29,12 +29,14 @@ public class Student {
         this.degree = newDegree.toLowerCase();
     }
 
+    // Class functions
     public void printStudent() {
         String fullName = WordUtils.capitalizeFully(givenName + " " + familyName);
         System.out.println("Academic Record For: " + fullName +
                 "\nDegree:   " + WordUtils.capitalizeFully(degree));
     }
 
+    // Getters/Setters
     public String getFamilyName() {
         return familyName;
     }

@@ -4,11 +4,14 @@ package StudentDatabase;
 
 // Authors: Jack Harris,
 
+// Imports
 import org.apache.commons.text.WordUtils;
 
 public class MedStudent extends Student {
-    protected String prize;
+    // Variables
+    protected String prize; // Needs to be an array of 10 Prize objects
 
+    // Constructor
     public MedStudent (int newStudentNum,
                        String newFamilyName,
                        String newGivenName,
@@ -18,11 +21,13 @@ public class MedStudent extends Student {
         this.prize = newPrize;
     }
 
+    // Class functions
     @Override
     public void printStudent() {
         super.printStudent();
         System.out.println("Prize:    " + WordUtils.capitalizeFully(prize));
     }
 
+    // Getters/Setters
 
 }
