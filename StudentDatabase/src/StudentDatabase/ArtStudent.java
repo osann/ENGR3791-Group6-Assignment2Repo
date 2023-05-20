@@ -13,6 +13,8 @@ public class ArtStudent extends Student {
     protected String minor;
 
     // Constructor
+    //test
+
     public ArtStudent (int newStudentNum,
                        String newFamilyName,
                        String newGivenName,
