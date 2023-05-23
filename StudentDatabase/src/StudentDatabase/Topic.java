@@ -1,10 +1,19 @@
 package StudentDatabase;
+/*
+ * -- Student Database Program - Assignment 2 --
+ * -- ENGR3791 - Software Testing --
+ *
+ * Author(s): Jack Harris
+ */
 
 // Imports
 import java.lang.StringBuilder;
 
-// Authors: Jack Harris,
-
+/**
+ *  Represents a Students topic.
+ *  Each Student has a list of topics.
+ *  Holds topicCode, grade and an optional mark.
+ */
 public class Topic {
 
     // Enum to handle the options for grades

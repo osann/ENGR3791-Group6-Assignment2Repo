@@ -1,9 +1,19 @@
 package StudentDatabase;
+/*
+ * -- Student Database Program - Assignment 2 --
+ * -- ENGR3791 - Software Testing --
+ *
+ * Author(s): Jack Harris
+ */
 
 // Imports
 import org.apache.commons.text.WordUtils;
 import java.util.ArrayList;
 
+/**
+ *  Represents a single Student.
+ *  Holds studentNum, familyName, givenName, degree and a topicList.
+ */
 public class Student {
 
     // Variables

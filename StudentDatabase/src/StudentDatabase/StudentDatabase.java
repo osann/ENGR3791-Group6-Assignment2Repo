@@ -1,9 +1,15 @@
 package StudentDatabase;
+/*
+ * -- Student Database Program - Assignment 2 --
+ * -- ENGR3791 - Software Testing --
+ *
+ * Author(s): Jack Harris
+ */
 
-// Imports
-
-// Authors: Jack Harris,
-
+/**
+ *  Database management system that maintains Student and Prize objects.
+ *  WIP
+ */
 public class StudentDatabase {
     public static void main (String[] args) {
         // Testing Students objects

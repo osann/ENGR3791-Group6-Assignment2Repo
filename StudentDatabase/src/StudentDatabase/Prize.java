@@ -7,8 +7,8 @@ package StudentDatabase;
  */
 
 /**
- *  Represents a single Prize object.
- *
+ *  Represents a single Prize.
+ *  Holds prizeName, topicCodeTemplate and min.
  */
 public class Prize {
 

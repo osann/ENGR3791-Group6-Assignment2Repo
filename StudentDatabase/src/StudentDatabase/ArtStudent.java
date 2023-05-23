@@ -1,11 +1,19 @@
 package StudentDatabase;
+/*
+ * -- Student Database Program - Assignment 2 --
+ * -- ENGR3791 - Software Testing --
+ *
+ * Author(s): Jack Harris
+ */
 
 // Imports
-
-// Authors: Jack Harris,
-
 import org.apache.commons.text.WordUtils;
 
+/**
+ *  Represents a Student in an Art degree.
+ *  An extension of the Student class.
+ *  Holds a major and minor variable.
+ */
 public class ArtStudent extends Student {
 
     // Variables

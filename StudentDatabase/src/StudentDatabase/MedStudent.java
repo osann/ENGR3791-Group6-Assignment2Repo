@@ -1,12 +1,19 @@
 package StudentDatabase;
-
-// Imports
-
-// Authors: Jack Harris,
+/*
+ * -- Student Database Program - Assignment 2 --
+ * -- ENGR3791 - Software Testing --
+ *
+ * Author(s): Jack Harris
+ */
 
 // Imports
 import org.apache.commons.text.WordUtils;
 
+/**
+ *  Represents a Student in a medicine degree.
+ *  An extension of the Student class.
+ *  Holds a list of awarded Prize's.
+ */
 public class MedStudent extends Student {
     // Variables
     protected String prize; // Needs to be an array of 10 Prize objects
