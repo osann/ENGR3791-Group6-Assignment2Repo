@@ -1,6 +1,17 @@
 package StudentDatabase;
+/*
+ * -- Student Database Program - Assignment 2 --
+ * -- ENGR3791 - Software Testing --
+ *
+ * Author(s): Jack Harris
+ */
 
+/**
+ *  Represents a single Prize object.
+ *
+ */
 public class Prize {
+
     // Variables
     protected String prizeName;
     protected StringBuilder topicCodeTemplate = new StringBuilder(8);
