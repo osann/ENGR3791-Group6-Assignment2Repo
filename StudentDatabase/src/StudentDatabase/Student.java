@@ -13,7 +13,7 @@ public class Student {
     protected String degree;
 
     // Topic Variables
-    ArrayList<Topic> topicArrayList = new ArrayList<Topic>();
+    ArrayList<Topic> topicList = new ArrayList<>();
 
     public Student() {
         // Throw an error?
