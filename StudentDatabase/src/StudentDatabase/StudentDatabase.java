@@ -10,9 +10,12 @@ public class StudentDatabase {
         ArtStudent testArtStudent = new ArtStudent(0000000, "Family", "given Test", "Arts", "Major Test", "Minor Test");
         MedStudent testMedStudent = new MedStudent(0000001, "Medicine", "Test SubJECT", "Medicine", "Test Prize 1988");
 
-        testArtStudent.printStudent();
+        testArtStudent.printStudentDetails();
         System.out.println();
-        testMedStudent.printStudent();
+        testMedStudent.printStudentDetails();
+        testArtStudent.addTopicResults("TEST1234", "FL");
+        System.out.println();
+        testArtStudent.printStudentTopicResults();
 
         // Testing Topic objects
         Topic testTopic = new Topic("ABCD1234", "FL");
