@@ -30,7 +30,7 @@ String givenName
 
 String degree (Limited to "Science", "Arts", "Medicine")
 
-ArrayList Result resultsList
+ArrayList Topic topicList
 
 **ArtStudent.java specific**
 
@@ -47,17 +47,15 @@ ArrayList Prize prizeList
 
 String prizeName
 
-String prizeDesc
+StringBuilder prizeTopic
 
-String prizeTopic
-
-int minAttempt
+int min
 
 
 ### Topic.java
 
-String topicCode (8 characters)
+StringBuilder topicCode (8 characters)
 
-String grade ("FL","PS","CR","DN" or "HD")
+enum grade ("FL","PS","CR","DN" or "HD")
 
 int mark (0-100, optional)
