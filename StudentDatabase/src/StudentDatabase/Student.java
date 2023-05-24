@@ -15,12 +15,6 @@ public class Student {
     // Topic Variables
     ArrayList<Topic> topicList = new ArrayList<>();
 
-    public Student() {
-        // Throw an error?
-        // Needed this for some reason
-
-    }
-
     // Constructor
     public Student(
             int newStudentNum,
@@ -38,14 +32,15 @@ public class Student {
     /**
      * Add Topic objects to a Student's Topic array list.
      * @param topicCode
-     * Code of the Topic
+     * Code of the Topic, example "COMP1234"
      * @param grade
      * Grade of the topic, "FL, PS, CR, DN, HD" are valid.
      */
     public void addTopicResults(String topicCode, String grade) {
         Topic newTopic = new Topic(topicCode, grade);
-        topicList.add(newTopic);
+        this.topicList.add(newTopic);
     }
+
     /**
      * Overloaded method to handle accepting a mark.
      * Add Topic objects to a Student's Topic array list.
@@ -58,7 +53,7 @@ public class Student {
      */
     public void addTopicResults(String topicCode, String grade, int mark) {
         Topic newTopic = new Topic(topicCode, grade, mark);
-        topicList.add(newTopic);
+        this.topicList.add(newTopic);
     }
 
     /**
