@@ -18,11 +18,14 @@ public class Prize {
     protected int min;
 
     // Constructor
+    public Prize(String newPrizeName) {
+        this.prizeName = newPrizeName;
+    }
+
     public Prize(
             String newPrizeName,
             String newTopicCode,
             int newMin) {
-
         this.prizeName = newPrizeName;
         this.topicCodeTemplate.append(newTopicCode);
         this.min = newMin;
