@@ -36,8 +36,8 @@ public class ArtStudent extends Student {
 
     // Class functions
     @Override
-    public void printStudent() {
-        super.printStudent();
+    public void printStudentDetails() {
+        super.printStudentDetails();
         System.out.println(
                 "Major:    " + WordUtils.capitalizeFully(major) +
                 "\nMinor:    " + WordUtils.capitalizeFully(minor));

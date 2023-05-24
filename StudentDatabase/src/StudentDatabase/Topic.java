@@ -35,9 +35,9 @@ public class Topic {
             String newTopicCode,
             String newGrade) {
 
-        this.topicCode.append(newTopicCode); // TO DO: Add a check to make sure newTopicCode is 8 Char
+        this.topicCode.append(newTopicCode); // TODO: Add a check to make sure newTopicCode is 8 Char
 
-        this.grade = Grade.valueOf(newGrade); // TO DO: Add a check to make sure newGrade is 2 Char
+        this.grade = Grade.valueOf(newGrade); // TODO: Add a check to make sure newGrade is 2 Char
                                                 // !! This will fail the enum check at least, maybe add a handle
     }
 
