@@ -14,6 +14,7 @@ public class StudentDatabase {
         System.out.println();
         testMedStudent.printStudentDetails();
         testArtStudent.addTopicResults("TEST1234", "FL");
+        testArtStudent.addTopicResults("TSET4321", "PS", 100);
         System.out.println();
         testArtStudent.printStudentTopicResults();
 
