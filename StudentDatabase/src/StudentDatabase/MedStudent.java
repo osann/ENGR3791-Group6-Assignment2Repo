@@ -9,6 +9,8 @@ package StudentDatabase;
 // Imports
 import org.apache.commons.text.WordUtils;
 
+import java.util.ArrayList;
+
 /**
  *  Represents a Student in a medicine degree.
  *  An extension of the Student class.
@@ -16,7 +18,7 @@ import org.apache.commons.text.WordUtils;
  */
 public class MedStudent extends Student {
     // Variables
-    protected String prize; // Needs to be an array of 10 Prize objects
+    protected ArrayList<Prize> prizeList = new ArrayList<>();
 
     // Constructor
     public MedStudent (int newStudentNum,
@@ -25,14 +27,25 @@ public class MedStudent extends Student {
                        String newDegree,
                        String newPrize) {
         super(newStudentNum, newFamilyName, newGivenName, newDegree);
-        this.prize = newPrize;
+        this.addPrize(newPrize);
     }
 
     // Class functions
+
+    /**
+     * Handles adding Prize objects to the Student's prizeList
+     */
+    public void addPrize(String prizeName) {
+        Prize newPrize = new Prize(prizeName);
+        this.prizeList.add(newPrize);
+    }
     @Override
     public void printStudentDetails() {
         super.printStudentDetails();
-        System.out.println("Prize:    " + WordUtils.capitalizeFully(prize));
+        for (Prize prize : prizeList) {
+            String prizeLine = "Prize:    " + prize.prizeName;
+            System.out.println(prizeLine);
+        }
     }
 
     // Getters/Setters

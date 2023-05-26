@@ -23,7 +23,7 @@ public class Student {
     protected String degree;
 
     // Topic Variables
-    ArrayList<Topic> topicList = new ArrayList<>();
+    protected ArrayList<Topic> topicList = new ArrayList<>();
 
     // Constructor
     public Student(

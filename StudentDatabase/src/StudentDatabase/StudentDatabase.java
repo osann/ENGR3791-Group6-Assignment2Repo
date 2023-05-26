@@ -21,6 +21,7 @@ public class StudentDatabase {
         testArtStudent.addTopicResults("TEST1234", "FL");
         testArtStudent.addTopicResults("TSET4321", "PS", 100);
         testMedStudent.addTopicResults("MMED8765", "HD", 5);
+        testMedStudent.addPrize("pRIZE");
         System.out.println();
         testArtStudent.printStudentTopicResults();
         testMedStudent.printStudentTopicResults();
