@@ -46,24 +46,26 @@ public class StudentDatabase {
                            String newGivenName,
                            String newDegree,
                            String x , String y) {
-        if (newDegree.toLowerCase() == "art") {
-            this.createArtStudent(newStudentNum, newFamilyName, newGivenName, x, y);
-        } else if (newDegree.toLowerCase() == "medicine") {
-            this.createMedStudent(newStudentNum, newFamilyName, newGivenName, x);
-        } else if (newDegree.toLowerCase() == "science") {
-            this.createStemStudent(newStudentNum, newFamilyName, newGivenName);
-        } else {
-            System.out.println("Bad newDegree value"); /* TODO: properly react to incorrect inputs */
+        switch (newDegree) {
+            case "art" -> this.createArtStudent(newStudentNum, newFamilyName, newGivenName, x, y);
+            case "medicine" -> this.createMedStudent(newStudentNum, newFamilyName, newGivenName, x);
+            case "science" -> this.createStemStudent(newStudentNum, newFamilyName, newGivenName);
+            default -> System.out.println("Bad newDegree value"); /* TODO: properly react to incorrect inputs */
         }
     }
 
     /**
      * Creates an ArtStudent instance with supplied information and adds to the database.
      * @param newStudentNum
+     * Student Number for Identification
      * @param newFamilyName
+     * Student last name.
      * @param newGivenName
+     * Student first name(s).
      * @param newMajor
+     * Exclusive to ArtStudent's, a major of a degree.
      * @param newMinor
+     * Exclusive to ArtStudent's, a minor of a degree.
      */
     public void createArtStudent(int newStudentNum,
                               String newFamilyName,
@@ -78,8 +80,11 @@ public class StudentDatabase {
     /**
      * Creates a MedStudent with supplied information and adds to the database.
      * @param newStudentNum
+     * Student Number for Identification
      * @param newFamilyName
+     * Student last name.
      * @param newGivenName
+     * Student first name(s).
      * @param prizeName
      * Exclusive to MedStudents, a Student can be created with a prize.
      */
@@ -96,8 +101,11 @@ public class StudentDatabase {
      * Creates a StemStudent and adds it to the database.
      * This is the most basic form of Student in regards to this database.
      * @param newStudentNum
+     * Student Number for Identification
      * @param newFamilyName
+     * Student last name.
      * @param newGivenName
+     * Student first name(s).
      */
     public void createStemStudent(int newStudentNum,
                                   String newFamilyName,
