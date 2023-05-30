@@ -1,11 +1,12 @@
 package StudentDatabase;
 
 import javax.swing.*;
+import java.awt.*;
 
-public class StudentDatabaseGUI {
+public class StudentDatabaseGUI extends JFrame{
 
-    private JPanel MAIN;
-    private JPanel Student;
+    private JPanel mainPanel;
+    private JPanel Student ;
     private JLabel studentDataBaseProgramLabel;
     private JPanel DegreeOptions1;
     private JPanel TopicDetails;
@@ -48,14 +49,16 @@ public class StudentDatabaseGUI {
     private void createUIComponents() {
         // TODO: place custom component creation code here
     }
-    public static void MainFrame(){
-        JFrame frame = new JFrame("Student DataBase Program");
-        frame.setSize(1000,700);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+    public StudentDatabaseGUI(){
+        setTitle("Student DataBase Program");
+        setSize(1000,700);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+
+
     }
     public static void main(String[] args) {
-
+        StudentDatabaseGUI myFrame = new StudentDatabaseGUI();
     }
 
 }
