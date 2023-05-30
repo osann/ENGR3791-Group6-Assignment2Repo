@@ -1,6 +1,9 @@
 package StudentDatabase;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 public class StudentDatabaseGUI extends JFrame{
 
@@ -9,19 +12,18 @@ public class StudentDatabaseGUI extends JFrame{
     private JLabel topicDetailsLabel;
     private JLabel degreeOptionsLabel;
     private JLabel studentDetailsLabel;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JComboBox comboBox1;
-    private JTextField textField4;
-    private JTextField textField5;
-    private JTextField textField6;
-    private JComboBox comboBox2;
-    private JTextField textField7;
-    private JTextField textField8;
-    private JTextField textField10;
-    private JTextField textField9;
-    private JTextField textField11;
+    private JTextField studentNumberTextField;
+    private JTextField FamilyNameTextField;
+    private JTextField gNametextField;
+    private JComboBox degreeComboBox;
+    private JTextField aMtextField;
+    private JTextField aMinorTextField;
+    private JTextField mPTextField;
+    private JComboBox gComboBox;
+    private JTextField tCodeTextField;
+    private JTextField markTextField;
+    private JTextField templateTextField;
+    private JTextField nOTTextField;
     private JButton addStudentButton;
     private JButton findStudentButton;
     private JButton addTopicResultButton;
@@ -29,9 +31,25 @@ public class StudentDatabaseGUI extends JFrame{
     private JButton printAllRecordsButton;
     private JButton clearAllRecordsButton;
     private JButton awardPrizeButton;
+    private JLabel studentNumberLabel;
+    private JLabel familyNameLabel;
+    private JLabel givenNameSLabel;
+    private JLabel degreeLabel;
+    private JLabel artsMajorLabel;
+    private JLabel artsMinorLabel;
+    private JLabel medicinePrizesLabel;
+    private JLabel topicCodeLabel;
+    private JLabel gradeLabel;
+    private JLabel markLabel;
+    private JLabel prizeNameLabel;
+    private JLabel templateLabel;
+    private JTextField prizeNameTextField;
+    private JLabel numberOfTopicsLabel;
+    private JLabel showText;
 
 
     private void createUIComponents() {
+
 
     }
 
@@ -45,6 +63,24 @@ public class StudentDatabaseGUI extends JFrame{
 
         setContentPane(mainPanel);
         setVisible(true);
+
+
+        addStudentButton.addActionListener(new ActionListener() { //for the add Student botton
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String studentNumber = studentNumberTextField.getText();
+                String familyName = FamilyNameTextField.getText();
+                String givenN = gNametextField.getText();
+
+                showText.setText(studentNumber + "  " + familyName + "  " + givenN + " " + String.valueOf((degreeComboBox.getSelectedItem())));
+            }
+        });
+        degreeComboBox.addActionListener(new ActionListener() { //for Degree comboBox
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     public static void main(String[] args) {
