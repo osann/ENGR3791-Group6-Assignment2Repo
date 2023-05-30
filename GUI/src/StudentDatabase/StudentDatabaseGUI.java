@@ -55,7 +55,7 @@ public class StudentDatabaseGUI {
         frame.setVisible(true);
     }
     public static void main(String[] args) {
-        MainFrame();
+
     }
 
 }
