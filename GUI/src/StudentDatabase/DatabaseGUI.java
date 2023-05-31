@@ -8,6 +8,7 @@ import javax.swing.*;
 
 public class DatabaseGUI extends JFrame{
     public static void main(String[] args) {
+
         jPanel panel = new JPanel();
         JFrame frame = new JFrame();
         frame.setSize(100, 100);
