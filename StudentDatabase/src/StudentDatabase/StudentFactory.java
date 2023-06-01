@@ -65,7 +65,8 @@ public class StudentFactory {
     }
 
     /**
-     * 
+     * This method prints each student in the studentList's details to the console.
+     * TODO: Print MedStudent prizes, Print ArtStudents major + minor
      */
     public void printStudents() {
         for (Student student : this.studentList) {
