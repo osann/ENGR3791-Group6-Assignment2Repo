@@ -34,12 +34,14 @@ public class ArtStudent extends Student {
     }
 
     // Class functions
+    public void printArtStudentAdditionalDetails(){
+        System.out.println("Major:    " + WordUtils.capitalizeFully(major) +
+                            "\nMinor:    " + WordUtils.capitalizeFully(minor));
+    }
     @Override
     public void printStudentDetails() {
         super.printStudentDetails();
-        System.out.println(
-                "Major:    " + WordUtils.capitalizeFully(major) +
-                "\nMinor:    " + WordUtils.capitalizeFully(minor));
+        this.printArtStudentAdditionalDetails();
     }
 
     // Getters/Setters
