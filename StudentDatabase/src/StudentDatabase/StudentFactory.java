@@ -51,6 +51,11 @@ public class StudentFactory {
             default -> System.out.println("Bad degree value"); /* TODO: properly react to incorrect inputs */
         }
     }
+
+    /**
+     * Overloaded methods to make the extra information input optional.
+     * I program in Python I apologize for this.
+     */
     public void createStudent(String degreeType, int newStudentNum, String newFamilyName, String newGivenName,
                               String x) {
         this.createStudent(degreeType, newStudentNum, newFamilyName, newGivenName, x, "");
