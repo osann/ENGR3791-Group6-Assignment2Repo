@@ -71,8 +71,6 @@ public class Student {
      *  This can easily be changed to return the topicResult String instead of printing it.
      */
     public void printStudentTopicResults() {
-        this.printStudentDetails();
-
         for (Topic topic : topicList) {
             String topicResult = topic.topicCode + " " + topic.grade + " ";
             if (topic.mark != 0) {

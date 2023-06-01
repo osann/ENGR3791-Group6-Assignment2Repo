@@ -25,8 +25,7 @@ public class StudentFactory {
         this.factoryName = newFactoryName;
     }
 
-    // Class functions
-
+    // Public methods
     /**
      * Used to add a Student to the database, handles all degree types.
      * @param degreeType
@@ -65,6 +64,17 @@ public class StudentFactory {
         this.createStudent(degreeType, newStudentNum, newFamilyName, newGivenName, "", "");
     }
 
+    /**
+     * 
+     */
+    public void printStudents() {
+        for (Student student : this.studentList) {
+            student.printStudentDetails();
+            student.printStudentTopicResults();
+        }
+    }
+
+    // Private methods
     /**
      * Creates an ArtStudent instance with supplied information and adds to the database.
      * @param newStudentNum
