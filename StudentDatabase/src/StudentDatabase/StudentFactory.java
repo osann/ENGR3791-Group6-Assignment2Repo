@@ -26,7 +26,6 @@ public class StudentFactory {
     }
 
     // Public methods
-
     /**
      * Creates a Student object relevant to the input degree.
      * @param inputs
@@ -50,6 +49,7 @@ public class StudentFactory {
      */
     public void printStudentsTopics() {
         for (Student student : this.studentList) {
+            System.out.println();
             student.printStudentDetails();
             student.printStudentTopicResults();
         }

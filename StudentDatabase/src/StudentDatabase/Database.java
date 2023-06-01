@@ -25,7 +25,6 @@ public class Database {
 
             while (scanner.hasNextLine()) {
                 String[] currentLine = (scanner.nextLine().split(","));
-
                 studentList.createStudent(currentLine);
 
             }
