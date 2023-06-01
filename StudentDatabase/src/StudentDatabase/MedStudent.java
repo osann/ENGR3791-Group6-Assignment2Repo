@@ -39,13 +39,17 @@ public class MedStudent extends Student {
         Prize newPrize = new Prize(prizeName);
         this.prizeList.add(newPrize);
     }
-    @Override
-    public void printStudentDetails() {
-        super.printStudentDetails();
-        for (Prize prize : prizeList) {
+
+    public void printMedStudentPrizes() {
+        for (Prize prize : this.prizeList) {
             String prizeLine = "Prize:    " + prize.prizeName;
             System.out.println(prizeLine);
         }
+    }
+    @Override
+    public void printStudentDetails() {
+        super.printStudentDetails();
+        this.printMedStudentPrizes();
     }
 
     // Getters/Setters
