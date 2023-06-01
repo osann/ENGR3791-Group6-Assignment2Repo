@@ -15,7 +15,6 @@ import java.util.ArrayList;
  *  Holds studentNum, familyName, givenName, degree and a topicList.
  */
 public class Student {
-
     // Variables
     protected int studentNum;       /* This needs to be updated so the number must be 7 digits */
     protected String familyName;

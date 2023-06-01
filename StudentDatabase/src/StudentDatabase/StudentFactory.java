@@ -18,10 +18,11 @@ import java.util.ArrayList;
 public class StudentFactory {
     // Variables
     protected ArrayList<Student> studentList = new ArrayList<>();
+    protected String factoryName;
 
     // Constructor
-    public StudentFactory(){
-
+    public StudentFactory(String newFactoryName){
+        this.factoryName = newFactoryName;
     }
 
     // Class functions
