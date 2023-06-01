@@ -26,15 +26,13 @@ public class Database {
             while (scanner.hasNextLine()) {
                 String[] currentLine = (scanner.nextLine().split(","));
 
-                if (currentLine[0].equals("S")) {
-                    studentList.createStudent("S", Integer.parseInt(currentLine[1]), currentLine[2], currentLine[3]);
-                }
+                studentList.createStudent(currentLine);
 
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        studentList.printStudents();
+        studentList.printStudentsTopics();
     }
 
 }

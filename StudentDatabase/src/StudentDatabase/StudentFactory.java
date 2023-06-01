@@ -26,49 +26,29 @@ public class StudentFactory {
     }
 
     // Public methods
+
     /**
-     * Used to add a Student to the database, handles all degree types.
-     * @param degreeType
-     * The degree Student studies.
-     * @param newStudentNum
-     * Student Number for Identification
-     * @param newFamilyName
-     * Student last name.
-     * @param newGivenName
-     * Student first name(s).
-     * @param x
-     * Information to pass to the create Student methods.
-     * @param y
-     * Information to pass to the create Student methods.
+     * Creates a Student object relevant to the input degree.
+     * @param inputs
+     * String array that contains information to input new student.
+     * Order should follow: degreeType, studentNum, familyName, givenName
+     * Followed by a prize for MedStudents or a major and minor for ArtsStudents
      */
-    public void createStudent(String degreeType, int newStudentNum, String newFamilyName, String newGivenName,
-                              String x, String y) {
+    public void createStudent(String[] inputs) {
         System.out.println("Inputting new student into database...");
-        switch (degreeType) {
-            case "A" -> this.createArtStudent(newStudentNum, newFamilyName, newGivenName, x, y);
-            case "M" -> this.createMedStudent(newStudentNum, newFamilyName, newGivenName, x);
-            case "S" -> this.createStemStudent(newStudentNum, newFamilyName, newGivenName);
+        switch (inputs[0]) {
+            case "A" -> this.createArtStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3], inputs[4], inputs[5]);
+            case "M" -> this.createMedStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3], inputs[4]);
+            case "S" -> this.createStemStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3]);
             default -> System.out.println("Bad degree value"); /* TODO: properly react to incorrect inputs */
         }
     }
 
     /**
-     * Overloaded methods to make the extra information input optional.
-     * I program in Python I apologize for this.
-     */
-    public void createStudent(String degreeType, int newStudentNum, String newFamilyName, String newGivenName,
-                              String x) {
-        this.createStudent(degreeType, newStudentNum, newFamilyName, newGivenName, x, "");
-    }
-    public void createStudent(String degreeType, int newStudentNum, String newFamilyName, String newGivenName) {
-        this.createStudent(degreeType, newStudentNum, newFamilyName, newGivenName, "", "");
-    }
-
-    /**
      * This method prints each student in the studentList's details to the console.
-     * TODO: Print MedStudent prizes, Print ArtStudents major + minor
+     * Student details are followed by associated topics.
      */
-    public void printStudents() {
+    public void printStudentsTopics() {
         for (Student student : this.studentList) {
             student.printStudentDetails();
             student.printStudentTopicResults();
