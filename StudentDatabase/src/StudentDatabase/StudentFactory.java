@@ -55,6 +55,25 @@ public class StudentFactory {
         }
     }
 
+    /**
+     * Returns an array with a students information dependent on the input studentNum.
+     */
+    public String[] returnStudentInformation(int studentNum) {
+        String[] studentInfo = new String[4];
+        try {
+            for (Student student : studentList) {
+                if (student.getStudentNum() == studentNum) {
+                    studentInfo = student.returnStudentInformation();
+                }
+                throw new Exception("studentNum does not match database");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return studentInfo;
+    }
+
     // Private methods
     /**
      * Creates an ArtStudent instance with supplied information and adds to the database.

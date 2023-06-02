@@ -88,6 +88,10 @@ public class Student {
                 "\nDegree:   " + WordUtils.capitalizeFully(degree));
     }
 
+    public String[] returnStudentInformation() {
+        return new String[]{String.valueOf(this.studentNum), this.familyName, this.givenName, this.degree};
+    }
+
     // Getters/Setters
     public String getFamilyName() {
         return familyName;
