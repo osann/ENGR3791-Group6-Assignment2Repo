@@ -61,11 +61,15 @@ public class StudentFactory {
      */
     public String[] returnStudentInformation(int studentNum) {
         String[] studentInfo = new String[4];
+        boolean found = false;
         try {
             for (Student student : studentList) {
                 if (student.getStudentNum() == studentNum) {
                     studentInfo = student.returnStudentInformation();
+                    found = true;
                 }
+            }
+            if (!found) {
                 throw new Exception("studentNum does not match database");
             }
 

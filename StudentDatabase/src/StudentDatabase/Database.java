@@ -10,6 +10,7 @@ package StudentDatabase;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -32,6 +33,7 @@ public class Database {
             e.printStackTrace();
         }
         studentList.printStudentsTopics();
+        System.out.println(Arrays.toString(studentList.returnStudentInformation(9800123)));
     }
 
 }
