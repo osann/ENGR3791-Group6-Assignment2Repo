@@ -57,6 +57,7 @@ public class StudentFactory {
 
     /**
      * Returns an array with a students information dependent on the input studentNum.
+     * Throws an exception if studentNum isn't found.
      */
     public String[] returnStudentInformation(int studentNum) {
         String[] studentInfo = new String[4];
