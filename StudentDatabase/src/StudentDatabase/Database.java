@@ -38,6 +38,7 @@ public class Database {
         System.out.println(Arrays.toString(studentList.returnStudentTopicInformation(9800123, "TEST1234")));
 
         studentList.printAllStudentsTopics();
+
     }
 
 }
