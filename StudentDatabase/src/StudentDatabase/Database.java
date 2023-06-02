@@ -20,7 +20,7 @@ public class Database {
     // Variables
     static StudentFactory studentList = new StudentFactory("Example Academy");
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Scanner scanner = new Scanner(new File("StudentDatabase/src/StudentDatabase/TestInputLines.txt"));
 
@@ -34,6 +34,8 @@ public class Database {
         }
         studentList.printStudentsTopics();
         System.out.println(Arrays.toString(studentList.returnStudentInformation(9800123)));
+        studentList.addTopicToStudent(new String[]{"9800123", "TEST1234", "PS"});
+        System.out.println(Arrays.toString(studentList.returnStudentTopicInformation(9800123, "TEST1234")));
     }
 
 }
