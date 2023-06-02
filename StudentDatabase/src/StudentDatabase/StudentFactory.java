@@ -66,7 +66,7 @@ public class StudentFactory {
      * This method prints each student in the studentList's details to the console.
      * Student details are followed by associated topics.
      */
-    public void printStudentsTopics() {
+    public void printAllStudentsTopics() {
         for (Student student : this.studentList) {
             System.out.println();
             student.printStudentDetails();

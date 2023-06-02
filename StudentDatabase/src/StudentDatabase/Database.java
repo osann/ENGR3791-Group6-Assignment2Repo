@@ -32,10 +32,12 @@ public class Database {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        studentList.printStudentsTopics();
+        studentList.printAllStudentsTopics();
         System.out.println(Arrays.toString(studentList.returnStudentInformation(9800123)));
         studentList.addTopicToStudent(new String[]{"9800123", "TEST1234", "PS"});
         System.out.println(Arrays.toString(studentList.returnStudentTopicInformation(9800123, "TEST1234")));
+
+        studentList.printAllStudentsTopics();
     }
 
 }
