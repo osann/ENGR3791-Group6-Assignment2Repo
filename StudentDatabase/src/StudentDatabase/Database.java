@@ -15,27 +15,19 @@ import java.util.Scanner;
 
 /**
  * Class to handle input and database of students.
+ * Perhaps update this to be a class to read from file instead of a main method.S
  */
 public class Database {
     // Variables
     static StudentFactory studentList = new StudentFactory("Example Academy");
+    static FileHandler fHand = new FileHandler(studentList);
 
     public static void main(String[] args) throws Exception {
-        try {
-            Scanner scanner = new Scanner(new File("StudentDatabase/src/StudentDatabase/TestInputLines.txt"));
+        String path = "StudentDatabase/src/StudentDatabase/TestInputLines.txt";
 
-            while (scanner.hasNextLine()) {
-                String[] currentLine = (scanner.nextLine().split(","));
-                studentList.createStudent(currentLine);
+        fHand.inputFromFile(path);
 
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        studentList.printAllStudentsTopics();
-        System.out.println(Arrays.toString(studentList.returnStudentInformation(9800123)));
         studentList.addTopicToStudent(new String[]{"9800123", "TEST1234", "PS"});
-        System.out.println(Arrays.toString(studentList.returnStudentTopicInformation(9800123, "TEST1234")));
 
         studentList.printAllStudentsTopics();
 
