@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 public class StudentDatabaseGUI extends JFrame{
 
+    //function in the GUI
     private JPanel mainPanel;
     private JLabel awardPrizesLabel;
     private JLabel topicDetailsLabel;
@@ -47,7 +48,9 @@ public class StudentDatabaseGUI extends JFrame{
     private JLabel numberOfTopicsLabel;
     private JLabel showText;
 
+    private String studentNumber;
 
+    // for save the data from list
     private void createUIComponents() {
 
 
@@ -87,6 +90,7 @@ public class StudentDatabaseGUI extends JFrame{
 
             }
         });
+
 
     }
 
