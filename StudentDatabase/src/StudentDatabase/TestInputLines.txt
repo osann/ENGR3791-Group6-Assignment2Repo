@@ -1,6 +1,10 @@
+// Sample input file
+// Student details
 S,9800123,Smith,John Paul
 M,9821012,Jones,Mary,Chemistry Prize 1998
 A,9987654,Howard,John,Politics,Economics
+
+// Topic results
 R,9821012,BIOL1000,HD,89
 R,9821012,CHEM1001,HD,92
 R,9800123,COMP1000,PS,55

@@ -27,8 +27,6 @@ public class Database {
 
         fHand.inputFromFile(path);
 
-        studentList.addTopicToStudent(new String[]{"9800123", "TEST1234", "PS"});
-
         studentList.printAllStudentsTopics();
 
     }

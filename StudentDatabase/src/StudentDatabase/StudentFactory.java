@@ -47,18 +47,16 @@ public class StudentFactory {
      * Adds a Topic object to the specified Student object.
      * @param inputs
      * String array that contains information to identify a Student and topic information.
-     * Order should follow: studentNum, topicCode, grade
-     * Followed by mark if relevant.
      * @throws Exception
      * Throws errors if specified studentNum doesn't match.
      */
     public void addTopicToStudent(String[] inputs) throws Exception {
         System.out.println("Adding topic to student record...");
-        if (inputs.length == 4) {
-            this.returnStudent(Integer.parseInt(inputs[0])).addTopicResults(inputs[1], inputs[2],
-                    Integer.parseInt(inputs[3]));
-        } else if (inputs.length == 3) {
-            this.returnStudent(Integer.parseInt(inputs[0])).addTopicResults(inputs[1], inputs[2]);
+        if (inputs.length == 5) {
+            this.returnStudent(Integer.parseInt(inputs[1])).addTopicResults(inputs[2], inputs[3],
+                    Integer.parseInt(inputs[4]));
+        } else if (inputs.length == 4) {
+            this.returnStudent(Integer.parseInt(inputs[1])).addTopicResults(inputs[2], inputs[3]);
         }
     }
 
