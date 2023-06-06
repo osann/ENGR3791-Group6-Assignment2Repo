@@ -71,9 +71,20 @@ public class StudentDatabaseGUI extends JFrame{
                 String studentNumber = studentNumberTextField.getText();
                 String familyName = FamilyNameTextField.getText();
                 String givenN = gNametextField.getText();
+                String degree = String.valueOf(degreeComboBox.getSelectedItem());
+                String aMtext = aMtextField.getText();
+                String aMinor = aMinorTextField.getText();
+                String mP = mPTextField.getText();
+                String tCode = tCodeTextField.getText();
+                String mark = markTextField.getText();
+                String grade = String.valueOf(gComboBox.getSelectedItem());
+                String prizeName = prizeNameTextField.getText();
+                String template = templateTextField.getText();
+                String nOT = nOTTextField.getText();
 
 
-                showText.setText(studentNumber + "  " + familyName + "  " + givenN + " " + String.valueOf((degreeComboBox.getSelectedItem())));
+                showText.setText(studentNumber + "  " + familyName + "  " + givenN + " " + degree + aMtext + aMinor + mP + tCode + mark + grade + prizeName + template + nOT);
+
             }
         });
 
