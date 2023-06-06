@@ -15,14 +15,16 @@ import java.util.Scanner;
  * Class to handle inputting Student information with a file.
  */
 public class FileHandler {
+    // Variables
     StudentFactory sFact;
     String[] functionTriggers = {"S", "M", "A", "R", "P"};
 
+    // Constructor
     public FileHandler(StudentFactory studentFactory) {
         this.sFact = studentFactory;
-
     }
 
+    // Class methods
     /**
      * Adds Student information to the attached StudentFactory with a .txt file.
      * @param pathname
@@ -43,6 +45,7 @@ public class FileHandler {
         }
     }
 
+    // Private methods
     /**
      * Helper method to initiate workflow through methods.
      * @param input
