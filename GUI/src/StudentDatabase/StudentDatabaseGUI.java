@@ -72,7 +72,8 @@ public class StudentDatabaseGUI extends JFrame{
                 String familyName = FamilyNameTextField.getText();
                 String givenN = gNametextField.getText();
 
-                showText.setText(studentNumber + "  " + familyName + "  " + givenN + "   " + String.valueOf((degreeComboBox.getSelectedItem())));
+
+                showText.setText(studentNumber + "  " + familyName + "  " + givenN + " " + String.valueOf((degreeComboBox.getSelectedItem())));
             }
         });
 
@@ -80,7 +81,6 @@ public class StudentDatabaseGUI extends JFrame{
 
     public static void main(String[] args) {
         StudentDatabaseGUI myFr = new StudentDatabaseGUI();
-
     }
 
 }
