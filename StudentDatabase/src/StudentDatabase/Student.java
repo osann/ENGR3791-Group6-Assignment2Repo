@@ -15,7 +15,6 @@ import java.util.ArrayList;
  *  Holds studentNum, familyName, givenName, degree and a topicList.
  */
 public class Student {
-
     // Variables
     protected int studentNum;       /* This needs to be updated so the number must be 7 digits */
     protected String familyName;
@@ -72,8 +71,6 @@ public class Student {
      *  This can easily be changed to return the topicResult String instead of printing it.
      */
     public void printStudentTopicResults() {
-        this.printStudentDetails();
-
         for (Topic topic : topicList) {
             String topicResult = topic.topicCode + " " + topic.grade + " ";
             if (topic.mark != 0) {
@@ -89,6 +86,30 @@ public class Student {
                 " (" + getStudentNum() + ")");
         System.out.println("Academic Record For: " + fullName +
                 "\nDegree:   " + WordUtils.capitalizeFully(degree));
+    }
+
+    public String[] returnStudentInformation() {
+        return new String[]{String.valueOf(this.studentNum), this.familyName, this.givenName, this.degree};
+    }
+
+    public Topic returnTopic(String topicCode) throws Exception {
+        for (Topic topic : this.topicList) {
+            if (String.valueOf(topic.getTopicCode()).equals(topicCode)) {
+                return topic;
+            }
+        }
+        throw new Exception("topicCode does not match.");
+    }
+
+    public String[] returnStudentTopicInformation(String topicCode) {
+        String[] topicInfo = new String[3];
+
+        try {
+            topicInfo = this.returnTopic(topicCode).returnTopicInformation();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return topicInfo;
     }
 
     // Getters/Setters
