@@ -8,11 +8,6 @@ package StudentDatabase;
 
 // Imports
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Arrays;
-import java.util.Scanner;
-
 /**
  * Class to handle input and database of students.
  * Perhaps update this to be a class to read from file instead of a main method.S
