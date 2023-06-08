@@ -225,6 +225,50 @@ public class StudentDatabaseGUI extends JFrame{
         findTopicResultButton.addActionListener(new ActionListener() { // find topic Result
             @Override
             public void actionPerformed(ActionEvent e) {
+                 String studentNum = studentNumberTextField.getText();
+                 String topicCode = tCodeTextField.getText();
+
+                 try{
+                     String[] topicResult = studentList.returnStudentTopicInformation(Integer.parseInt(studentNum), topicCode);
+
+                     if (topicResult != null){
+                         // Topic result found, update the fields
+                         String topicName   = topicResult[0];
+                         String grade       = topicResult[1];
+                         String mark        = topicResult[2];
+                         System.out.println("[0] : " +topicResult[0] + "[1] : " + topicResult[1] + " [2] : " + topicResult[2]);
+
+                         tCodeTextField.setText(topicName);
+                         markTextField.setText(mark);
+
+                         if(grade.equals("HD")){
+                             gComboBox.setSelectedIndex(0);
+                         } else if (grade.equals("DN")) {
+                             gComboBox.setSelectedIndex(1);
+                         } else if (grade.equals("CR")) {
+                             gComboBox.setSelectedIndex(2);
+                         } else if (grade.equals("PS")) {
+                             gComboBox.setSelectedIndex(3);
+                         } else if (grade.equals("FL")) {
+                             gComboBox.setSelectedIndex(4);
+                         }
+
+                         // Show a success message
+                         showText.setText("Topic result found for Student ID: " + studentNum + " and Topic Code: " + topicCode);
+
+                     }else{
+                         // No matching topic result found, clear the fields
+                         markTextField.setText("");
+                         gComboBox.setSelectedIndex(0); // Assuming the index 0 represents an empty selection
+                         prizeNameTextField.setText("");
+
+                         // Show a message indicating no matching result
+                         showText.setText("No matching topic result found for Student ID: " + studentNum + " and Topic Code: " + topicCode);
+                     }
+                 }catch (Exception ex){
+                     // An error occurred while finding the topic result
+                     showText.setText("Failed to find topic result. Please check the Student ID and Topic Code.");
+                 }
 
             }
         });
