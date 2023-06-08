@@ -92,6 +92,26 @@ public class Student {
         return new String[]{String.valueOf(this.studentNum), this.familyName, this.givenName, this.degree};
     }
 
+    public Topic returnTopic(String topicCode) throws Exception {
+        for (Topic topic : this.topicList) {
+            if (String.valueOf(topic.getTopicCode()).equals(topicCode)) {
+                return topic;
+            }
+        }
+        throw new Exception("topicCode does not match.");
+    }
+
+    public String[] returnStudentTopicInformation(String topicCode) {
+        String[] topicInfo = new String[3];
+
+        try {
+            topicInfo = this.returnTopic(topicCode).returnTopicInformation();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return topicInfo;
+    }
+
     // Getters/Setters
     public String getFamilyName() {
         return familyName;

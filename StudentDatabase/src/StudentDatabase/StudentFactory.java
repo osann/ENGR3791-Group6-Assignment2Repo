@@ -44,10 +44,29 @@ public class StudentFactory {
     }
 
     /**
+     * Adds a Topic object to the specified Student object.
+     * @param inputs
+     * String array that contains information to identify a Student and topic information.
+     * Order should follow: studentNum, topicCode, grade
+     * Followed by mark if relevant.
+     * @throws Exception
+     * Throws errors if specified studentNum doesn't match.
+     */
+    public void addTopicToStudent(String[] inputs) throws Exception {
+        System.out.println("Adding topic to student record...");
+        if (inputs.length == 4) {
+            this.returnStudent(Integer.parseInt(inputs[0])).addTopicResults(inputs[1], inputs[2],
+                    Integer.parseInt(inputs[3]));
+        } else if (inputs.length == 3) {
+            this.returnStudent(Integer.parseInt(inputs[0])).addTopicResults(inputs[1], inputs[2]);
+        }
+    }
+
+    /**
      * This method prints each student in the studentList's details to the console.
      * Student details are followed by associated topics.
      */
-    public void printStudentsTopics() {
+    public void printAllStudentsTopics() {
         for (Student student : this.studentList) {
             System.out.println();
             student.printStudentDetails();
@@ -56,27 +75,58 @@ public class StudentFactory {
     }
 
     /**
+     * Returns Student object if studentNum matches a Student in studentList.
+     * Throws exception if studentNum isn't found.
+     * @param studentNum
+     * Which studentNum to match.
+     * @return
+     * Returns a Student.
+     */
+    public Student returnStudent(int studentNum) throws Exception {
+        for (Student student : studentList) {
+            if (student.getStudentNum() == studentNum) {
+                return student;
+            }
+        }
+        throw new Exception("studentNum does not match database");
+    }
+
+    /**
      * Returns an array with a students information dependent on the input studentNum.
      * Throws an exception if studentNum isn't found.
+     * @param studentNum
+     * Which studentNum to match.
      */
     public String[] returnStudentInformation(int studentNum) {
         String[] studentInfo = new String[4];
-        boolean found = false;
-        try {
-            for (Student student : studentList) {
-                if (student.getStudentNum() == studentNum) {
-                    studentInfo = student.returnStudentInformation();
-                    found = true;
-                }
-            }
-            if (!found) {
-                throw new Exception("studentNum does not match database");
-            }
 
+        try {
+            studentInfo = this.returnStudent(studentNum).returnStudentInformation();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return studentInfo;
+    }
+
+    /**
+     * Returns an array with a students specific topic information.
+     * Throws an exception if studentNum or topicCode isn't found.
+     * @param studentNum
+     * Which studentNum to match.
+     * @param topicCode
+     * Which topicCode to match.
+     * @return
+     * Returns a String array with topicCode, grade and mark if there is one.
+     */
+    public String[] returnStudentTopicInformation(int studentNum, String topicCode) {
+        String[] studentTopicInfo = new String[3];
+
+        try {
+            studentTopicInfo = this.returnStudent(studentNum).returnStudentTopicInformation(topicCode);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return studentTopicInfo;
     }
 
     // Private methods
