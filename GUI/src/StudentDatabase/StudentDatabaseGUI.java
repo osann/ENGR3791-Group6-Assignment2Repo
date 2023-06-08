@@ -137,6 +137,34 @@ public class StudentDatabaseGUI extends JFrame{
 
             }
         });
+        ActionListener listener = new ActionListener() { // for the all button
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String studentNumber = studentNumberTextField.getText();
+                String familyName = FamilyNameTextField.getText();
+                String givenN = gNametextField.getText();
+                String degree = String.valueOf(degreeComboBox.getSelectedItem());
+                String aMtext = aMtextField.getText();
+                String aMinor = aMinorTextField.getText();
+                String mP = mPTextField.getText();
+                String tCode = tCodeTextField.getText();
+                String mark = markTextField.getText();
+                String grade = String.valueOf(gComboBox.getSelectedItem());
+                String prizeName = prizeNameTextField.getText();
+                String template = templateTextField.getText();
+                String nOT = nOTTextField.getText();
+
+
+                showText.setText(studentNumber + "  " + familyName + "  " + givenN + " " + degree + aMtext + aMinor + mP + tCode + mark + grade + prizeName + template + nOT);
+            }
+        };
+        addStudentButton.addActionListener(listener);
+        findStudentButton.addActionListener(listener);
+        addTopicResultButton.addActionListener(listener);
+        findTopicResultButton.addActionListener(listener);
+        printAllRecordsButton.addActionListener(listener);
+        clearAllRecordsButton.addActionListener(listener);
+        awardPrizeButton.addActionListener(listener);
     }
 
     public static void main(String[] args) {
