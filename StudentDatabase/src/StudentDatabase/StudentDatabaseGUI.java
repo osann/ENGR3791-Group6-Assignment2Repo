@@ -101,6 +101,7 @@ public class StudentDatabaseGUI extends JFrame{
                     } else if (degreeCombox.equals("Science")) {
                         newDegree = "S";
                     }
+
                     inputs[0] = newDegree;
                     inputs[1] = studentNumber;
                     inputs[2] = familyName;
@@ -121,6 +122,50 @@ public class StudentDatabaseGUI extends JFrame{
         findStudentButton.addActionListener(new ActionListener() { // for Find student
             @Override
             public void actionPerformed(ActionEvent e) {
+                String studentNum = studentNumberTextField.getText();
+                //System.out.println("this is find top : " + studentNum);
+
+                try {
+                    // Retrieve the student information from the studentList
+                    String[] studentInfo = studentList.returnStudentInformation(Integer.parseInt(studentNum));
+
+                    // Update the fields with the retrieved student information
+                    String studenNumb = studentInfo[0];
+                    String familyName = studentInfo[1];
+                    String givenName = studentInfo[2];
+                    String degree = studentInfo[3];
+
+                    System.out.println("this is in : degree : " + degree + " this is num : "+ studenNumb + " this is Fname: " + familyName + " this is Gname:  " + givenName);
+
+                    // Map the degree value to the corresponding display value
+
+                    if (degree.equals("art")){
+                        degreeComboBox.setSelectedIndex(0);
+                    }else if (degree.equals("medicine")){
+                        degreeComboBox.setSelectedIndex(1);
+                    }else if (degree.equals("science")){
+                        degreeComboBox.setSelectedIndex(2);
+                    }else {
+                        degreeComboBox.setSelectedIndex(0);
+                    }
+
+
+                    // Set the values to the appropriate fields
+                    studentNumberTextField.setText(studenNumb);
+                    FamilyNameTextField.setText(familyName);
+                    gNametextField.setText(givenName);
+
+                    // Show a success message
+                    showText.setText("Student details found for ID: " + studentNum);
+
+                } catch (Exception ex) {
+                    // The student number does not exist in the list
+                    FamilyNameTextField.setText("");
+                    gNametextField.setText("");
+
+                    // Show an error message
+                    showText.setText("Student not found for ID: " + studentNum);
+                }
 
             }
         });
