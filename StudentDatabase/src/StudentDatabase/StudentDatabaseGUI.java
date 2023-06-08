@@ -85,24 +85,36 @@ public class StudentDatabaseGUI extends JFrame{
                 String aMinorText = aMinorTextField.getText();
                 String newDegree = "";
 
-                if (degreeCombox.equals("Arts")){
-                    newDegree = "A";
-                    inputs[4] = aMtext;
-                    inputs[5] = aMinorText;
-                } else if (degreeCombox.equals("Medicine")) {
-                    newDegree = "M";
-                    inputs[4] = prizeNameText;
-                } else if (degreeCombox.equals("Science")) {
-                    newDegree = "S";
-                }
-                inputs[0] = newDegree;
-                inputs[1] = studentNumber;
-                inputs[2] = familyName;
-                inputs[3] = givenN;
-                studentList.createStudent(inputs);
 
+                boolean isDuplciate = false;
+                try { // if the uunmber exist
+                    Student existingStudent = studentList.returnStudent(Integer.parseInt(studentNumber));
+                    isDuplciate = true;
+                } catch (Exception ex) { // is not
+                    if (degreeCombox.equals("Arts")){
+                        newDegree = "A";
+                        inputs[4] = aMtext;
+                        inputs[5] = aMinorText;
+                    } else if (degreeCombox.equals("Medicine")) {
+                        newDegree = "M";
+                        inputs[4] = prizeNameText;
+                    } else if (degreeCombox.equals("Science")) {
+                        newDegree = "S";
+                    }
+                    inputs[0] = newDegree;
+                    inputs[1] = studentNumber;
+                    inputs[2] = familyName;
+                    inputs[3] = givenN;
+                    studentList.createStudent(inputs);
+
+                }
+                if (isDuplciate) {
+                    showText.setText("Student number already exists: " + studentNumber);
+                    return; // Stop further execution
+                }
 
             }
+
         });
 
 
