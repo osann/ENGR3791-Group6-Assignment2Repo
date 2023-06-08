@@ -92,6 +92,51 @@ public class StudentDatabaseGUI extends JFrame{
         });
 
 
+        findStudentButton.addActionListener(new ActionListener() { // for Find student
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+
+        addTopicResultButton.addActionListener(new ActionListener() { //for add topic Result
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+
+        findTopicResultButton.addActionListener(new ActionListener() { // find topic Result
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        printAllRecordsButton.addActionListener(new ActionListener() { // print all records
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+
+        clearAllRecordsButton.addActionListener(new ActionListener() { //Clear all Records
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+
+        awardPrizeButton.addActionListener(new ActionListener() { // award Prize
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     public static void main(String[] args) {
