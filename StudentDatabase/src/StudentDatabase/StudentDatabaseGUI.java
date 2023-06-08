@@ -70,11 +70,9 @@ public class StudentDatabaseGUI extends JFrame{
         setContentPane(mainPanel);
         setVisible(true);
 
-
         addStudentButton.addActionListener(new ActionListener() { //for the add Student botton
             @Override
             public void actionPerformed(ActionEvent e) {
-                //ArrayList<String> studNumber = new ArrayList<>();
 
                 String[] inputs = new String[6];
 
@@ -87,31 +85,23 @@ public class StudentDatabaseGUI extends JFrame{
                 String aMinorText = aMinorTextField.getText();
                 String newDegree = "";
 
-
-
                 if (degreeCombox.equals("Arts")){
-
                     newDegree = "A";
                     inputs[4] = aMtext;
                     inputs[5] = aMinorText;
-
                 } else if (degreeCombox.equals("Medicine")) {
-
                     newDegree = "M";
                     inputs[4] = prizeNameText;
-
-
                 } else if (degreeCombox.equals("Science")) {
-
                     newDegree = "S";
-
                 }
                 inputs[0] = newDegree;
                 inputs[1] = studentNumber;
                 inputs[2] = familyName;
                 inputs[3] = givenN;
-
                 studentList.createStudent(inputs);
+
+
             }
         });
 
