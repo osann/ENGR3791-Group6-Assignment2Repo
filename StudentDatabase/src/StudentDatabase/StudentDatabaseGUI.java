@@ -48,6 +48,9 @@ public class StudentDatabaseGUI extends JFrame{
     private JLabel showText;
 
     private String studentNumber;
+    static StudentFactory studentList = new StudentFactory("Example Academy");
+
+
 
     // for save the data from list
     private void createUIComponents() {
@@ -73,19 +76,14 @@ public class StudentDatabaseGUI extends JFrame{
                 String studentNumber = studentNumberTextField.getText();
                 String familyName = FamilyNameTextField.getText();
                 String givenN = gNametextField.getText();
-                String degree = String.valueOf(degreeComboBox.getSelectedItem());
-                String aMtext = aMtextField.getText();
-                String aMinor = aMinorTextField.getText();
-                String mP = mPTextField.getText();
-                String tCode = tCodeTextField.getText();
-                String mark = markTextField.getText();
-                String grade = String.valueOf(gComboBox.getSelectedItem());
-                String prizeName = prizeNameTextField.getText();
-                String template = templateTextField.getText();
-                String nOT = nOTTextField.getText();
+                String degreeCombox = String.valueOf(degreeComboBox.getSelectedItem());
+                String newDegree;
 
 
-                showText.setText(studentNumber + "  " + familyName + "  " + givenN + " " + degree + aMtext + aMinor + mP + tCode + mark + grade + prizeName + template + nOT);
+
+
+
+                showText.setText(studentNumber + "  " + familyName + "  " + givenN);
 
             }
         });
@@ -165,7 +163,12 @@ public class StudentDatabaseGUI extends JFrame{
         awardPrizeButton.addActionListener(listener);
     }
 
+    public void StudentFactory(){
+
+    }
+
     public static void main(String[] args) {
+
         StudentDatabaseGUI myFr = new StudentDatabaseGUI();
     }
 
