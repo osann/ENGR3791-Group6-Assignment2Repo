@@ -65,8 +65,18 @@ public class StudentFactory {
         /*
         get list of Student's that took matching "BIOL" DONE
             get list of topics from matching Student DONE
+            check if theyve done the min
          */
-        ArrayList<Student> arrayList = TopicMatcher.returnStudentsMatching(inputs[2], this.studentList);
+        ArrayList<Student> matchingStudents = TopicMatcher.returnStudentsMatching(inputs[2], this.studentList);
+        Student winner;
+        int averageMark;
+        for (Student s : matchingStudents) {
+            ArrayList<Topic> ts = s.returnMatchingTopics(inputs[2]);
+            if (ts.size() >= Integer.parseInt(inputs[3])) {
+                // get the highest mark and the student with it
+
+            }
+        }
 
 
     }

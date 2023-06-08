@@ -71,6 +71,32 @@ public class Topic {
         }
     }
 
+    /**
+     * Simply maps the enum grades to a number.
+     * @return
+     * Returns mark correlating to grade.
+     */
+    public int mapGradeToMark() {
+        switch (this.grade) {
+            case FL -> {
+                return 0;
+            }
+            case PS -> {
+                return 50;
+            }
+            case CR -> {
+                return 60;
+            }
+            case DN -> {
+                return 70;
+            }
+            case HD -> {
+                return 80;
+            }
+        }
+        return -1;
+    }
+
     // Getters/Setters
     public String getTopicCode() {
         return String.valueOf(topicCode);
