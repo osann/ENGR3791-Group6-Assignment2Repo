@@ -3,6 +3,7 @@ package StudentDatabase;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 
 public class StudentDatabaseGUI extends JFrame{
 
@@ -73,17 +74,47 @@ public class StudentDatabaseGUI extends JFrame{
         addStudentButton.addActionListener(new ActionListener() { //for the add Student botton
             @Override
             public void actionPerformed(ActionEvent e) {
+                //ArrayList<String> studNumber = new ArrayList<>();
+
+                String[] inputs = new String[6];
+
                 String studentNumber = studentNumberTextField.getText();
                 String familyName = FamilyNameTextField.getText();
                 String givenN = gNametextField.getText();
                 String degreeCombox = String.valueOf(degreeComboBox.getSelectedItem());
-                String newDegree;
+                String prizeNameText = prizeNameTextField.getText();
+                String aMtext = aMtextField.getText();
+                String aMinorText = aMinorTextField.getText();
+                String newDegree = "";
+
+                inputs[0] = newDegree;
+                inputs[1] = studentNumber;
+                inputs[2] = familyName;
+                inputs[3] = givenN;
+
+                if (degreeCombox.equals("Arts")){
+
+                    newDegree = "A";
+                    
+                    inputs[4] = aMtext;
+                    inputs[5] = aMinorText;
+                    studentList.createStudent(inputs);
 
 
 
+                } else if (degreeCombox.equals("Medicine")) {
+                    newDegree = "M";
+                    inputs[4] = prizeNameText;
+                    studentList.createStudent(inputs);
+
+                } else if (degreeCombox.equals("Science")) {
+                    newDegree = "S";
+                    studentList.createStudent(inputs);
+                }
+                System.out.println(inputs +"  "+ newDegree);
 
 
-                showText.setText(studentNumber + "  " + familyName + "  " + givenN);
+                showText.setText(newDegree);
 
             }
         });
@@ -133,34 +164,34 @@ public class StudentDatabaseGUI extends JFrame{
 
             }
         });
-        ActionListener listener = new ActionListener() { // for the all button
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String studentNumber = studentNumberTextField.getText();
-                String familyName = FamilyNameTextField.getText();
-                String givenN = gNametextField.getText();
-                String degree = String.valueOf(degreeComboBox.getSelectedItem());
-                String aMtext = aMtextField.getText();
-                String aMinor = aMinorTextField.getText();
-                String mP = mPTextField.getText();
-                String tCode = tCodeTextField.getText();
-                String mark = markTextField.getText();
-                String grade = String.valueOf(gComboBox.getSelectedItem());
-                String prizeName = prizeNameTextField.getText();
-                String template = templateTextField.getText();
-                String nOT = nOTTextField.getText();
-
-
-                showText.setText(studentNumber + "  " + familyName + "  " + givenN + " " + degree + aMtext + aMinor + mP + tCode + mark + grade + prizeName + template + nOT);
-            }
-        };
-        addStudentButton.addActionListener(listener);
-        findStudentButton.addActionListener(listener);
-        addTopicResultButton.addActionListener(listener);
-        findTopicResultButton.addActionListener(listener);
-        printAllRecordsButton.addActionListener(listener);
-        clearAllRecordsButton.addActionListener(listener);
-        awardPrizeButton.addActionListener(listener);
+//        ActionListener listener = new ActionListener() { // for the all button
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                String studentNumber = studentNumberTextField.getText();
+//                String familyName = FamilyNameTextField.getText();
+//                String givenN = gNametextField.getText();
+//                String degree = String.valueOf(degreeComboBox.getSelectedItem());
+//                String aMtext = aMtextField.getText();
+//                String aMinor = aMinorTextField.getText();
+//                String mP = mPTextField.getText();
+//                String tCode = tCodeTextField.getText();
+//                String mark = markTextField.getText();
+//                String grade = String.valueOf(gComboBox.getSelectedItem());
+//                String prizeName = prizeNameTextField.getText();
+//                String template = templateTextField.getText();
+//                String nOT = nOTTextField.getText();
+//
+//
+//                showText.setText(studentNumber + "  " + familyName + "  " + givenN + " " + degree + aMtext + aMinor + mP + tCode + mark + grade + prizeName + template + nOT);
+//            }
+//        };
+//        addStudentButton.addActionListener(listener);
+//        findStudentButton.addActionListener(listener);
+//        addTopicResultButton.addActionListener(listener);
+//        findTopicResultButton.addActionListener(listener);
+//        printAllRecordsButton.addActionListener(listener);
+//        clearAllRecordsButton.addActionListener(listener);
+//        awardPrizeButton.addActionListener(listener);
     }
 
     public void StudentFactory(){

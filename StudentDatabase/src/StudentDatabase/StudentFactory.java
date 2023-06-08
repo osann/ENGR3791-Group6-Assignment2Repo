@@ -40,8 +40,11 @@ public class StudentFactory {
             case "M" -> this.createMedStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3], inputs[4]);
             case "S" -> this.createStemStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3]);
             default -> System.out.println("Bad degree value"); /* TODO: properly react to incorrect inputs */
+
         }
+        this.printAllStudentsTopics();
     }
+
 
     /**
      * Adds a Topic object to the specified Student object.
