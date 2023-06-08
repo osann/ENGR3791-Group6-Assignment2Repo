@@ -63,9 +63,17 @@ public class Topic {
                 "\nGrade:      " + this.grade);
     }
 
+    public String[] returnTopicInformation(){
+        if (mark > 0) {
+            return new String[]{this.getTopicCode(), this.getGrade(), String.valueOf(this.getMark())};
+        } else {
+            return new String[]{this.getTopicCode(), this.getGrade()};
+        }
+    }
+
     // Getters/Setters
-    public StringBuilder getTopicCode() {
-        return topicCode;
+    public String getTopicCode() {
+        return String.valueOf(topicCode);
     }
 
     public void setTopicCode(StringBuilder topicCode) {

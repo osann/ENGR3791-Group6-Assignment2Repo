@@ -110,7 +110,7 @@
         </constraints>
         <properties>
           <model>
-            <item value="Arst"/>
+            <item value="Arts"/>
             <item value="Medicine"/>
             <item value="Science"/>
           </model>

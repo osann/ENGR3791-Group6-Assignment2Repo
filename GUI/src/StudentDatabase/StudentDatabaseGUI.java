@@ -130,7 +130,6 @@ public class StudentDatabaseGUI extends JFrame{
             }
         });
 
-
         awardPrizeButton.addActionListener(new ActionListener() { // award Prize
             @Override
             public void actionPerformed(ActionEvent e) {
