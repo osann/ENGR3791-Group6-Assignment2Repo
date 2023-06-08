@@ -60,6 +60,17 @@ public class StudentFactory {
         }
     }
 
+    public void awardPrize(String[] inputs) {
+        System.out.println("Awarding prize to student record...");
+        /*
+        get list of Student's that took matching "BIOL" DONE
+            get list of topics from matching Student DONE
+         */
+        ArrayList<Student> arrayList = TopicMatcher.returnStudentsMatching(inputs[2], this.studentList);
+
+
+    }
+
     /**
      * This method prints each student in the studentList's details to the console.
      * Student details are followed by associated topics.

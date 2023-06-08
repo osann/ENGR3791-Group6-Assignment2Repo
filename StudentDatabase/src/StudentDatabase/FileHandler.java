@@ -110,7 +110,7 @@ public class FileHandler {
      * TODO: Implement this.
      */
     private void inputPrize(String[] input) {
-
+        sFact.awardPrize(input);
     }
 
 }
