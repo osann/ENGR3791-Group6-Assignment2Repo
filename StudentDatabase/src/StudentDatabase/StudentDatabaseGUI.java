@@ -135,7 +135,7 @@ public class StudentDatabaseGUI extends JFrame{
                     String givenName = studentInfo[2];
                     String degree = studentInfo[3];
 
-                    System.out.println("this is in : degree : " + degree + " this is num : "+ studenNumb + " this is Fname: " + familyName + " this is Gname:  " + givenName);
+                    //System.out.println("this is in : degree : " + degree + " this is num : "+ studenNumb + " this is Fname: " + familyName + " this is Gname:  " + givenName);
 
                     // Map the degree value to the corresponding display value
 
@@ -175,6 +175,49 @@ public class StudentDatabaseGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                String[] inputs = new String[5];
+                String studentNum = studentNumberTextField.getText();
+                String topicCode = tCodeTextField.getText();
+                String marks = markTextField.getText();
+                String grade = String.valueOf(gComboBox.getSelectedItem());
+
+                System.out.println("this is top: this is student{}" + studentNum + " {topiccode} :" + topicCode + " {mark : } " + marks + " {Grade : }" +  grade);
+
+                // Check if all mandatory fields are present
+                if (studentNum.isEmpty() || topicCode.isEmpty() || marks.isEmpty()) {
+                    // Display an error message if any mandatory field is missing
+                    showText.setText("Please provide Student ID, Topic Code, and Marks.");
+                    return;
+                }
+
+                try {
+                    // Prepare the inputs array to add topic to the student
+                    if (!marks.isEmpty()) {
+                        //inputs = new String[]{studentNum, topicCode, topicCode, grade, marks};
+                        inputs[0] = "R";
+                        inputs[1] = studentNum;
+                        inputs[2] = topicCode;
+                        inputs[3] = grade;
+                        inputs[4] = marks;
+
+                        //System.out.println("this is input : [0] :" + inputs[0] + " [1] :" + inputs[1]);
+                    } else {
+                        inputs[0] = "R";
+                        inputs[1] = studentNum;
+                        inputs[2] = topicCode;
+                        inputs[3] = grade;
+                    }
+
+                    // Add the topic to the student
+                    studentList.addTopicToStudent(inputs);
+
+                    // Show a success message
+                    showText.setText("Topic result added for Student ID: " + studentNum);
+                } catch (Exception ex) {
+                    // The student number does not exist in the list or an error occurred
+                    showText.setText("Failed to add topic result. Please check the Student ID.");
+                }
+
             }
         });
 
@@ -207,34 +250,7 @@ public class StudentDatabaseGUI extends JFrame{
 
             }
         });
-//        ActionListener listener = new ActionListener() { // for the all button
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                String studentNumber = studentNumberTextField.getText();
-//                String familyName = FamilyNameTextField.getText();
-//                String givenN = gNametextField.getText();
-//                String degree = String.valueOf(degreeComboBox.getSelectedItem());
-//                String aMtext = aMtextField.getText();
-//                String aMinor = aMinorTextField.getText();
-//                String mP = mPTextField.getText();
-//                String tCode = tCodeTextField.getText();
-//                String mark = markTextField.getText();
-//                String grade = String.valueOf(gComboBox.getSelectedItem());
-//                String prizeName = prizeNameTextField.getText();
-//                String template = templateTextField.getText();
-//                String nOT = nOTTextField.getText();
-//
-//
-//                showText.setText(studentNumber + "  " + familyName + "  " + givenN + " " + degree + aMtext + aMinor + mP + tCode + mark + grade + prizeName + template + nOT);
-//            }
-//        };
-//        addStudentButton.addActionListener(listener);
-//        findStudentButton.addActionListener(listener);
-//        addTopicResultButton.addActionListener(listener);
-//        findTopicResultButton.addActionListener(listener);
-//        printAllRecordsButton.addActionListener(listener);
-//        clearAllRecordsButton.addActionListener(listener);
-//        awardPrizeButton.addActionListener(listener);
+
     }
 
     public void StudentFactory(){
