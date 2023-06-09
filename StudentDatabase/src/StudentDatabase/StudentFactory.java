@@ -64,10 +64,10 @@ public class StudentFactory {
         if (inputs.length == 5) {
             this.returnStudent(Integer.parseInt(inputs[1])).addTopicResults(inputs[2], inputs[3],
                     Integer.parseInt(inputs[4]));
-            //System.out.println("in studentF have mark " + " [1] :" + inputs[1] + " [2] : " + inputs[2] + " [3] : " + inputs[3] + " [4] : " + inputs[4]);
+
         } else if (inputs.length == 4) {
             this.returnStudent(Integer.parseInt(inputs[1])).addTopicResults(inputs[2], inputs[3]);
-            //System.out.println("In studentF no mark");
+
         }
     }
 
