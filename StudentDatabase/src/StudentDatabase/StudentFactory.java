@@ -83,6 +83,9 @@ public class StudentFactory {
         addPrizeToStudent(winnerNum, inputs[1]);
     }
 
+    /**
+     * Helper method for awardPrize()
+     */
     private int findWinner(ArrayList<MedStudent> sList, String[] inputs) {
         int winnerStudentNum = -1;
         int highestAverMark = 0;
@@ -95,6 +98,9 @@ public class StudentFactory {
         return winnerStudentNum;
     }
 
+    /**
+     * Helper method for findWinner()
+     */
     private int[] checkQualifies(ArrayList<Topic> ts, MedStudent s, String[] inputs, int winningStudentNum, int highestAverMark) {
         int winnerStudentNum = winningStudentNum;
         if (ts.size() >= Integer.parseInt(inputs[3])) {
