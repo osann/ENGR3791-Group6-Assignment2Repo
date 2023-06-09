@@ -37,7 +37,13 @@ public class StudentFactory {
         System.out.println("Inputting new student into database...");
         switch (inputs[0]) {
             case "A" -> this.createArtStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3], inputs[4], inputs[5]);
-            case "M" -> this.createMedStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3], inputs[4]);
+            case "M" -> {
+                try {
+                    this.createMedStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3], inputs[4]);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    this.createMedStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3]);
+                }
+            }
             case "S" -> this.createStemStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3]);
             default -> System.out.println("Bad degree value"); /* TODO: properly react to incorrect inputs */
 
@@ -62,6 +68,72 @@ public class StudentFactory {
         } else if (inputs.length == 4) {
             this.returnStudent(Integer.parseInt(inputs[1])).addTopicResults(inputs[2], inputs[3]);
             //System.out.println("In studentF no mark");
+        }
+    }
+
+    /**
+     * Awards prize to MedStudent with the highest average mark in template matching topics.
+     * @param inputs
+     * Should be something like String[] inputs = {"P", prizeName, topicCodeTemplate, min.
+     * @throws Exception
+     * Will throw an exception if trying to add prize to MedStudent, shouldn't occur normally, however.
+     */
+    public void awardPrize(String[] inputs) throws Exception {
+        ArrayList<MedStudent> matchingStudents = TopicMatcher.returnStudentsMatching(inputs[2], this.studentList);
+        int winnerNum = this.findWinner(matchingStudents, inputs);
+        if (winnerNum == -1) {
+            throw new Exception("No matching Student found.");
+        }
+        System.out.println("Awarding \"" + inputs[1] +  "\" to studentNum: " + winnerNum);
+        addPrizeToStudent(winnerNum, inputs[1]);
+    }
+
+    /**
+     * Helper method for awardPrize()
+     */
+    private int findWinner(ArrayList<MedStudent> sList, String[] inputs) {
+        int winnerStudentNum = -1;
+        int highestAverMark = 0;
+        for (MedStudent s : sList) {    /* Could probably move this loop to a separate method to call */
+            ArrayList<Topic> ts = s.returnMatchingTopics(inputs[2]);
+            int[] i = this.checkQualifies(ts, s, inputs, winnerStudentNum, highestAverMark);
+            winnerStudentNum = i[0];
+            highestAverMark = i[1];
+        }
+        return winnerStudentNum;
+    }
+
+    /**
+     * Helper method for findWinner()
+     */
+    private int[] checkQualifies(ArrayList<Topic> ts, MedStudent s, String[] inputs, int winningStudentNum, int highestAverMark) {
+        int winnerStudentNum = winningStudentNum;
+        if (ts.size() >= Integer.parseInt(inputs[3])) {
+            int potentialMark = TopicMatcher.getAverageGradeForMatchingTopics(inputs[2], s);
+            if (potentialMark >= highestAverMark) {
+                winnerStudentNum = s.getStudentNum();
+                highestAverMark = potentialMark;
+            }
+        }
+        return new int[]{winnerStudentNum, highestAverMark};
+    }
+
+    /**
+     * Helper method to add a Prize to a Student.
+     * @param studentNum
+     * studentNum to identify which record to add Prize to.
+     * @param prizeName
+     * Prize name.
+     */
+    public void addPrizeToStudent(int studentNum, String prizeName) {
+        for (Student s : studentList) {
+            if (studentNum == s.getStudentNum()) {
+                try {
+                    s.addPrize(prizeName);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -173,6 +245,16 @@ public class StudentFactory {
                                  String prizeName) {
         MedStudent newStudent = new MedStudent(newStudentNum, newFamilyName, newGivenName,
                                                 "medicine", prizeName);
+        this.studentList.add(newStudent);
+    }
+
+    /**
+     * Overloaded method to allow a MedStudent to be created without a Prize.
+     */
+    private void createMedStudent(int newStudentNum,
+                                  String newFamilyName,
+                                  String newGivenName) {
+        MedStudent newStudent = new MedStudent(newStudentNum, newFamilyName, newGivenName, "medicine");
         this.studentList.add(newStudent);
     }
 

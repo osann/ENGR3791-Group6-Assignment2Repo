@@ -7,8 +7,7 @@ package StudentDatabase;
  */
 
 // Imports
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -43,6 +42,22 @@ public class FileHandler {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Creates a file "StudentDatabase.txt" and redirects printAllStudentsTopics() to write to file.
+     * @param sFact
+     * Pass the database information to write to file.
+     * @throws FileNotFoundException
+     * Shouldn't occur as the first step is createFile()
+     */
+    public void writeToFile(StudentFactory sFact) throws FileNotFoundException {
+        File f = this.createFile();
+        assert f != null;
+        PrintStream stream = new PrintStream(f);
+        System.setOut(stream);
+        sFact.printAllStudentsTopics();
+        System.setOut(System.out);
     }
 
     // Private methods
@@ -107,10 +122,29 @@ public class FileHandler {
 
     /**
      * Helper method to add a Prize to a Student via the StudentFactory reference.
-     * TODO: Implement this.
      */
-    private void inputPrize(String[] input) {
-
+    private void inputPrize(String[] input) throws Exception {
+        sFact.awardPrize(input);
     }
 
+    /**
+     * Helper method that creates and returns a File object.
+     * @return
+     * Returns reference to created File.
+     */
+    private File createFile() {
+        try {
+            File f = new File("StudentDatabase.txt");
+            if (f.createNewFile()) {
+                System.out.println("File created: " + f.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+            return f;
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
