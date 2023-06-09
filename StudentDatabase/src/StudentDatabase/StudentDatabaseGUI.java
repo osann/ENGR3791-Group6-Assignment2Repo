@@ -113,6 +113,16 @@ public class StudentDatabaseGUI extends JFrame{
                     inputs[2] = familyName;
                     inputs[3] = givenN;
                     studentList.createStudent(inputs);
+                    showText.setText("Student added :" + studentNumber);
+
+                    //clear the TextField
+                    studentNumberTextField.setText("");
+                    FamilyNameTextField.setText("");
+                    gNametextField.setText("");
+                    prizeNameTextField.setText("");
+                    aMtextField.setText("");
+                    aMinorTextField.setText("");
+                    degreeComboBox.setSelectedIndex(0);
 
                 }
                 if (isDuplciate) {
@@ -282,6 +292,12 @@ public class StudentDatabaseGUI extends JFrame{
         printAllRecordsButton.addActionListener(new ActionListener() { // print all records
             @Override
             public void actionPerformed(ActionEvent e) {
+                StringBuilder records = new StringBuilder();
+
+                //ArrayList<Student>  studentLists = studentList.returnStudent(Integer.parseInt(studentNum);
+
+
+
 
             }
         });

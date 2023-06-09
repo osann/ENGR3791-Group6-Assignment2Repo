@@ -51,7 +51,6 @@ public class StudentFactory {
         this.printAllStudentsTopics();
     }
 
-
     /**
      * Adds a Topic object to the specified Student object.
      * @param inputs
