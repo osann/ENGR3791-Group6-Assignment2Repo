@@ -174,6 +174,14 @@ public class StudentFactory {
         throw new Exception("Not a medical student.");
     }
 
+    public ArtStudent returnArtStudent(int studentNum) throws Exception {
+        Student s = this.returnStudent(studentNum);
+        if (s.getDegree().equals("art")) {
+            return (ArtStudent) s;
+        }
+        throw new Exception("Not an art student.");
+    }
+
     /**
      * Returns an array with a students information dependent on the input studentNum.
      * Throws an exception if studentNum isn't found.
