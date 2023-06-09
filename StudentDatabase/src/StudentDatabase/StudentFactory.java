@@ -80,8 +80,10 @@ public class StudentFactory {
         for (MedStudent s : matchingStudents) {    /* Could probably move this loop to a separate method to call */
             ArrayList<Topic> ts = s.returnMatchingTopics(inputs[2]);
             if (ts.size() >= Integer.parseInt(inputs[3])) {
-                if (TopicMatcher.getAverageGradeForMatchingTopics(inputs[2], s) >= highestAverMark) {
+                int potentialNum = TopicMatcher.getAverageGradeForMatchingTopics(inputs[2], s);
+                if (potentialNum >= highestAverMark) {
                     winnerStudentNum = s.getStudentNum();
+                    highestAverMark = potentialNum;
                 }
             }
         }
