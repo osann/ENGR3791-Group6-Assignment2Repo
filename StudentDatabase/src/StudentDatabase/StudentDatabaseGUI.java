@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class StudentDatabaseGUI extends JFrame{
 
@@ -46,6 +47,7 @@ public class StudentDatabaseGUI extends JFrame{
     private JTextField prizeNameTextField;
     private JLabel numberOfTopicsLabel;
     private JLabel showText;
+    private JScrollPane medPrizScroll;
 
     private String studentNumber;
     static StudentFactory studentList = new StudentFactory("Example Academy");
@@ -293,6 +295,29 @@ public class StudentDatabaseGUI extends JFrame{
                 String prizeName = prizeNameTextField.getText();
                 String template = templateTextField.getText();
                 String numOfTopic = nOTTextField.getText();
+                String studentNum = studentNumberTextField.getText();
+
+
+                String[] inputs = new String[4];
+                inputs[0] = "p";
+                inputs[1] = prizeName;
+                inputs[2] = template;
+                inputs[3] = numOfTopic;
+
+                try{
+                    studentList.awardPrize(inputs);
+                    showText.setText("Prize awarded successfully: " + prizeName);
+                }catch (Exception ex){
+                    showText.setText("Failed to award prize or no matching students found for: " + prizeName);
+
+                }
+
+                try {
+                    ArrayList<Prize> list = studentList.returnStudent(Integer.parseInt(studentNum)).PrizeList();
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+                medPrizScroll.setT
 
 
             }
