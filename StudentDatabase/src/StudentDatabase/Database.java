@@ -24,6 +24,8 @@ public class Database {
 
         studentList.printAllStudentsTopics();
 
+        fHand.writeToFile(studentList);
+
     }
 
 }
