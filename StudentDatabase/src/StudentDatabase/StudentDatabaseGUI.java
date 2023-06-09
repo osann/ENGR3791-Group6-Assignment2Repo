@@ -19,7 +19,6 @@ public class StudentDatabaseGUI extends JFrame{
     private JComboBox degreeComboBox;
     private JTextField aMtextField;
     private JTextField aMinorTextField;
-    private JTextField mPTextField;
     private JComboBox gComboBox;
     private JTextField tCodeTextField;
     private JTextField markTextField;
@@ -291,15 +290,16 @@ public class StudentDatabaseGUI extends JFrame{
         awardPrizeButton.addActionListener(new ActionListener() { // award Prize
             @Override
             public void actionPerformed(ActionEvent e) {
+                String prizeName = prizeNameTextField.getText();
+                String template = templateTextField.getText();
+                String numOfTopic = nOTTextField.getText();
+
 
             }
         });
 
     }
 
-    public void StudentFactory(){
-
-    }
 
     public static void main(String[] args) {
 
