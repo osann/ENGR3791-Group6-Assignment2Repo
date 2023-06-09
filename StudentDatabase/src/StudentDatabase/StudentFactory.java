@@ -75,23 +75,36 @@ public class StudentFactory {
      */
     public void awardPrize(String[] inputs) throws Exception {
         ArrayList<MedStudent> matchingStudents = TopicMatcher.returnStudentsMatching(inputs[2], this.studentList);
-        int winnerStudentNum = -1;
-        int highestAverMark = 0;
-        for (MedStudent s : matchingStudents) {    /* Could probably move this loop to a separate method to call */
-            ArrayList<Topic> ts = s.returnMatchingTopics(inputs[2]);
-            if (ts.size() >= Integer.parseInt(inputs[3])) {
-                int potentialNum = TopicMatcher.getAverageGradeForMatchingTopics(inputs[2], s);
-                if (potentialNum >= highestAverMark) {
-                    winnerStudentNum = s.getStudentNum();
-                    highestAverMark = potentialNum;
-                }
-            }
-        }
-        if (winnerStudentNum == -1) {
+        int winnerNum = this.findWinner(matchingStudents, inputs);
+        if (winnerNum == -1) {
             throw new Exception("No matching Student found.");
         }
-        System.out.println("Awarding \"" + inputs[1] +  "\" to studentNum: " + winnerStudentNum);
-        addPrizeToStudent(winnerStudentNum, inputs[1]);
+        System.out.println("Awarding \"" + inputs[1] +  "\" to studentNum: " + winnerNum);
+        addPrizeToStudent(winnerNum, inputs[1]);
+    }
+
+    private int findWinner(ArrayList<MedStudent> sList, String[] inputs) {
+        int winnerStudentNum = -1;
+        int highestAverMark = 0;
+        for (MedStudent s : sList) {    /* Could probably move this loop to a separate method to call */
+            ArrayList<Topic> ts = s.returnMatchingTopics(inputs[2]);
+            int[] i = this.checkQualifies(ts, s, inputs, winnerStudentNum, highestAverMark);
+            winnerStudentNum = i[0];
+            highestAverMark = i[1];
+        }
+        return winnerStudentNum;
+    }
+
+    private int[] checkQualifies(ArrayList<Topic> ts, MedStudent s, String[] inputs, int winningStudentNum, int highestAverMark) {
+        int winnerStudentNum = winningStudentNum;
+        if (ts.size() >= Integer.parseInt(inputs[3])) {
+            int potentialMark = TopicMatcher.getAverageGradeForMatchingTopics(inputs[2], s);
+            if (potentialMark >= highestAverMark) {
+                winnerStudentNum = s.getStudentNum();
+                highestAverMark = potentialMark;
+            }
+        }
+        return new int[]{winnerStudentNum, highestAverMark};
     }
 
     /**
