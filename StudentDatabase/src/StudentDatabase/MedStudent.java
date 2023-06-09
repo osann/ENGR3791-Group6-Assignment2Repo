@@ -55,12 +55,14 @@ public class MedStudent extends Student {
             System.out.println(prizeLine);
         }
     }
+
     @Override
     public void printStudentDetails() {
         super.printStudentDetails();
         this.printMedStudentPrizes();
     }
 
-    // Getters/Setters
-
+    public ArrayList<Prize> returnPrizeList() {
+        return this.prizeList;
+    }
 }
