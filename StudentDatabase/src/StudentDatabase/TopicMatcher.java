@@ -1,5 +1,12 @@
 package StudentDatabase;
+/*
+ * -- Student Database Program - Assignment 2 --
+ * -- ENGR3791 - Software Testing --
+ *
+ * Author(s): Jack Harris
+ */
 
+// Imports
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
