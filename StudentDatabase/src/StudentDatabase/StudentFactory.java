@@ -75,7 +75,6 @@ public class StudentFactory {
      */
     public void awardPrize(String[] inputs) throws Exception {
         ArrayList<MedStudent> matchingStudents = TopicMatcher.returnStudentsMatching(inputs[2], this.studentList);
-        System.out.println(matchingStudents);
         int winnerStudentNum = -1;
         int highestAverMark = 0;
         for (MedStudent s : matchingStudents) {    /* Could probably move this loop to a separate method to call */
@@ -86,9 +85,9 @@ public class StudentFactory {
                 }
             }
         }
-//        if (winnerStudentNum == -1) {
-//            throw new Exception("No matching Student found.");
-//        }
+        if (winnerStudentNum == -1) {
+            throw new Exception("No matching Student found.");
+        }
         System.out.println("Awarding \"" + inputs[1] +  "\" to studentNum: " + winnerStudentNum);
         addPrizeToStudent(winnerStudentNum, inputs[1]);
     }

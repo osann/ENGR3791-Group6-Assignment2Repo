@@ -111,11 +111,9 @@ public class Student {
     public boolean hasMatchingTopics(String topicCodeToMatch) {
         for (Topic t : topicList) {
             if (TopicMatcher.matchTopic(topicCodeToMatch, t.getTopicCode())) {
-                System.out.println("FOUND: " + this.studentNum);
                 return true;
             }
         }
-        System.out.println("NOT FOUND "+ this.studentNum + " " + topicCodeToMatch);
         return false;
     }
 
