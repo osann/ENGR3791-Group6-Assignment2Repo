@@ -138,6 +138,10 @@ public class Student {
         return topicInfo;
     }
 
+    public void addPrize(String prizeName) throws Exception {
+        throw new Exception("Cannot add Prize to Student object. Must be MedStudent");
+    }
+
     // Getters/Setters
     public String getFamilyName() {
         return familyName;

@@ -15,17 +15,17 @@ public class TopicMatcher {
         return matcher.find();
     }
 
-    public static ArrayList<Student> returnStudentsMatching(String topicCodeTemplate, ArrayList<Student> studentList) {
-        ArrayList<Student> l = new ArrayList<>();
+    public static ArrayList<MedStudent> returnStudentsMatching(String topicCodeTemplate, ArrayList<Student> studentList) {
+        ArrayList<MedStudent> l = new ArrayList<>();
         for (Student s : studentList) {
             if (s.hasMatchingTopics(topicCodeTemplate)) {
-                l.add(s);
+                l.add((MedStudent) s);
             }
         }
         return l;
     }
 
-    public static int getAverageGradeForMatchingTopics(String topicCodeTemplate, Student s) {
+    public static int getAverageGradeForMatchingTopics(String topicCodeTemplate, MedStudent s) {
         ArrayList<Topic> ts = s.returnMatchingTopics(topicCodeTemplate);
         int sum = 0;
         for (Topic t : ts) {

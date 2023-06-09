@@ -37,7 +37,13 @@ public class StudentFactory {
         System.out.println("Inputting new student into database...");
         switch (inputs[0]) {
             case "A" -> this.createArtStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3], inputs[4], inputs[5]);
-            case "M" -> this.createMedStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3], inputs[4]);
+            case "M" -> {
+                try {
+                    this.createMedStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3], inputs[4]);
+                } catch (ArrayIndexOutOfBoundsException) {
+                    this.createMedStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3]);
+                }
+            }
             case "S" -> this.createStemStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3]);
             default -> System.out.println("Bad degree value"); /* TODO: properly react to incorrect inputs */
         }
@@ -60,25 +66,49 @@ public class StudentFactory {
         }
     }
 
-    public void awardPrize(String[] inputs) {
+    /**
+     * Awards prize to MedStudent with the highest average mark in template matching topics.
+     * @param inputs
+     * Should be something like String[] inputs = {"P", prizeName, topicCodeTemplate, min.
+     * @throws Exception
+     * Will throw an exception if trying to add prize to MedStudent, shouldn't occur normally, however.
+     */
+    public void awardPrize(String[] inputs) throws Exception {
         System.out.println("Awarding prize to student record...");
-        /*
-        get list of Student's that took matching "BIOL" DONE
-            get list of topics from matching Student DONE
-            check if theyve done the min
-         */
-        ArrayList<Student> matchingStudents = TopicMatcher.returnStudentsMatching(inputs[2], this.studentList);
-        Student winner;
-        int averageMark;
-        for (Student s : matchingStudents) {
+        ArrayList<MedStudent> matchingStudents = TopicMatcher.returnStudentsMatching(inputs[2], this.studentList);
+        int winnerStudentNum = 0;
+        int highestAverMark = 0;
+        for (MedStudent s : matchingStudents) {
             ArrayList<Topic> ts = s.returnMatchingTopics(inputs[2]);
             if (ts.size() >= Integer.parseInt(inputs[3])) {
-                // get the highest mark and the student with it
-
+                if (TopicMatcher.getAverageGradeForMatchingTopics(inputs[2], s) > highestAverMark) {
+                    winnerStudentNum = s.getStudentNum();
+                }
             }
         }
+        Student s = returnStudent(winnerStudentNum);
+        addPrizeToStudent(winnerStudentNum, inputs[1]);
+    }
 
-
+    /**
+     * Helper method to add a Prize to a Student.
+     * @param studentNum
+     * studentNum to identify which record to add Prize to.
+     * @param prizeName
+     * Prize name.
+     * @exception
+     * Throws an exception if trying to add to a Student and not a MedStudent.
+     */
+    public void addPrizeToStudent(int studentNum, String prizeName) throws Exception {
+        for (Student s : studentList) {
+            if (studentNum == s.getStudentNum()) {
+                try {
+                    s.addPrize(prizeName);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     /**
@@ -189,6 +219,16 @@ public class StudentFactory {
                                  String prizeName) {
         MedStudent newStudent = new MedStudent(newStudentNum, newFamilyName, newGivenName,
                                                 "medicine", prizeName);
+        this.studentList.add(newStudent);
+    }
+
+    /**
+     * Overloaded method to allow a MedStudent to be created without a Prize.
+     */
+    private void createMedStudent(int newStudentNum,
+                                  String newFamilyName,
+                                  String newGivenName) {
+        MedStudent newStudent = new MedStudent(newStudentNum, newFamilyName, newGivenName, "medicine");
         this.studentList.add(newStudent);
     }
 
