@@ -166,6 +166,14 @@ public class StudentFactory {
         throw new Exception("studentNum does not match database");
     }
 
+    public MedStudent returnMedStudent(int studentNum) throws Exception {
+        Student s = this.returnStudent(studentNum);
+        if (s.getDegree().equals("medicine")) {
+            return (MedStudent) s;
+        }
+        throw new Exception("Not a medical student.");
+    }
+
     /**
      * Returns an array with a students information dependent on the input studentNum.
      * Throws an exception if studentNum isn't found.
