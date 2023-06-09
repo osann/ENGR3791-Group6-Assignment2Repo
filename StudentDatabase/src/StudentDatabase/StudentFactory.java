@@ -40,7 +40,7 @@ public class StudentFactory {
             case "M" -> {
                 try {
                     this.createMedStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3], inputs[4]);
-                } catch (ArrayIndexOutOfBoundsException) {
+                } catch (ArrayIndexOutOfBoundsException e) {
                     this.createMedStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3]);
                 }
             }
@@ -74,19 +74,22 @@ public class StudentFactory {
      * Will throw an exception if trying to add prize to MedStudent, shouldn't occur normally, however.
      */
     public void awardPrize(String[] inputs) throws Exception {
-        System.out.println("Awarding prize to student record...");
         ArrayList<MedStudent> matchingStudents = TopicMatcher.returnStudentsMatching(inputs[2], this.studentList);
-        int winnerStudentNum = 0;
+        System.out.println(matchingStudents);
+        int winnerStudentNum = -1;
         int highestAverMark = 0;
-        for (MedStudent s : matchingStudents) {
+        for (MedStudent s : matchingStudents) {    /* Could probably move this loop to a separate method to call */
             ArrayList<Topic> ts = s.returnMatchingTopics(inputs[2]);
             if (ts.size() >= Integer.parseInt(inputs[3])) {
-                if (TopicMatcher.getAverageGradeForMatchingTopics(inputs[2], s) > highestAverMark) {
+                if (TopicMatcher.getAverageGradeForMatchingTopics(inputs[2], s) >= highestAverMark) {
                     winnerStudentNum = s.getStudentNum();
                 }
             }
         }
-        Student s = returnStudent(winnerStudentNum);
+//        if (winnerStudentNum == -1) {
+//            throw new Exception("No matching Student found.");
+//        }
+        System.out.println("Awarding \"" + inputs[1] +  "\" to studentNum: " + winnerStudentNum);
         addPrizeToStudent(winnerStudentNum, inputs[1]);
     }
 
@@ -96,10 +99,8 @@ public class StudentFactory {
      * studentNum to identify which record to add Prize to.
      * @param prizeName
      * Prize name.
-     * @exception
-     * Throws an exception if trying to add to a Student and not a MedStudent.
      */
-    public void addPrizeToStudent(int studentNum, String prizeName) throws Exception {
+    public void addPrizeToStudent(int studentNum, String prizeName) {
         for (Student s : studentList) {
             if (studentNum == s.getStudentNum()) {
                 try {

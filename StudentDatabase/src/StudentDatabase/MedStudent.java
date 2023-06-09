@@ -41,7 +41,6 @@ public class MedStudent extends Student {
     }
 
     // Class functions
-
     /**
      * Handles adding Prize objects to the Student's prizeList
      */

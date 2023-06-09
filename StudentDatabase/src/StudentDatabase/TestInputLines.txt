@@ -1,7 +1,7 @@
 // Sample input file
 // Student details
 S,9800123,Smith,John Paul
-M,9821012,Jones,Mary,Chemistry Prize 1998
+M,9821012,Jones,Mary
 A,9987654,Howard,John,Politics,Economics
 M,9999999,Testman,Houdini
 
@@ -16,7 +16,8 @@ R,9821012,PHYS1010,HD,93
 R,9800123,PSYC0123,FL,42
 R,9821012,PHYS2010,HD,93
 R,9999999,PHYS2010,PS,50
-R,9999999,COMP1000,HD
+R,9999999,PHYS1010,PS,60
+R,9999999,COMP1000,HD,90
 
 // Prizes
 P,Biology Prize 1998,BIOL1000,1

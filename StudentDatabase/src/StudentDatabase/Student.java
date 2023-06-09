@@ -110,17 +110,19 @@ public class Student {
      */
     public boolean hasMatchingTopics(String topicCodeToMatch) {
         for (Topic t : topicList) {
-            if (TopicMatcher.matchTopic(topicCodeToMatch, this.topicList)) {
+            if (TopicMatcher.matchTopic(topicCodeToMatch, t.getTopicCode())) {
+                System.out.println("FOUND: " + this.studentNum);
                 return true;
             }
         }
+        System.out.println("NOT FOUND "+ this.studentNum + " " + topicCodeToMatch);
         return false;
     }
 
     public ArrayList<Topic> returnMatchingTopics(String topicCodeToMatch) {
         ArrayList<Topic> topics = new ArrayList<>();
         for (Topic t : this.topicList) {
-            if (TopicMatcher.matchTopic(topicCodeToMatch, this.topicList)) {
+            if (TopicMatcher.matchTopic(topicCodeToMatch, t.getTopicCode())) {
                 topics.add(t);
             }
         }
@@ -140,6 +142,10 @@ public class Student {
 
     public void addPrize(String prizeName) throws Exception {
         throw new Exception("Cannot add Prize to Student object. Must be MedStudent");
+    }
+
+    public boolean isMedStudent() {
+        return degree.equals("medicine");
     }
 
     // Getters/Setters

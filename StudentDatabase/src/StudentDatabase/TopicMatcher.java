@@ -5,20 +5,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TopicMatcher {
-    public static boolean matchTopic(String topicCodeToMatch, ArrayList<Topic> topicList) {
+    public static boolean matchTopic(String topicCodeToMatch, String topicCode) {
         Pattern pattern = Pattern.compile(topicCodeToMatch);
-        Matcher matcher = null;
-        for (Topic t : topicList) {
-            matcher = pattern.matcher(t.topicCode);
-        }
-        assert matcher != null;
+        Matcher matcher = pattern.matcher(topicCode);
         return matcher.find();
     }
 
     public static ArrayList<MedStudent> returnStudentsMatching(String topicCodeTemplate, ArrayList<Student> studentList) {
         ArrayList<MedStudent> l = new ArrayList<>();
         for (Student s : studentList) {
-            if (s.hasMatchingTopics(topicCodeTemplate)) {
+            if ((s.hasMatchingTopics(topicCodeTemplate)) && s.isMedStudent()) {
                 l.add((MedStudent) s);
             }
         }
