@@ -44,6 +44,13 @@ public class FileHandler {
         }
     }
 
+    /**
+     * Creates a file "StudentDatabase.txt" and redirects printAllStudentsTopics() to write to file.
+     * @param sFact
+     * Pass the database information to write to file.
+     * @throws FileNotFoundException
+     * Shouldn't occur as the first step is createFile()
+     */
     public void writeToFile(StudentFactory sFact) throws FileNotFoundException {
         File f = this.createFile();
         assert f != null;
@@ -120,6 +127,11 @@ public class FileHandler {
         sFact.awardPrize(input);
     }
 
+    /**
+     * Helper method that creates and returns a File object.
+     * @return
+     * Returns reference to created File.
+     */
     private File createFile() {
         try {
             File f = new File("StudentDatabase.txt");
