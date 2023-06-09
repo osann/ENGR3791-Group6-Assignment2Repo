@@ -5,6 +5,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
+
+
+
 
 public class StudentDatabaseGUI extends JFrame{
 
@@ -297,31 +302,42 @@ public class StudentDatabaseGUI extends JFrame{
                 String numOfTopic = nOTTextField.getText();
                 String studentNum = studentNumberTextField.getText();
 
-
                 String[] inputs = new String[4];
                 inputs[0] = "p";
                 inputs[1] = prizeName;
                 inputs[2] = template;
                 inputs[3] = numOfTopic;
 
-                try{
+                try {
                     studentList.awardPrize(inputs);
                     showText.setText("Prize awarded successfully: " + prizeName);
-                }catch (Exception ex){
+                } catch (Exception ex) {
                     showText.setText("Failed to award prize or no matching students found for: " + prizeName);
-
                 }
 
                 try {
-                    ArrayList<Prize> list = studentList.returnStudent(Integer.parseInt(studentNum)).PrizeList();
+                    // Retrieve the prize list for the student
+                    ArrayList<Prize> prizeList = studentList.returnMedStudent(Integer.parseInt(studentNum)).returnPrizeList();
+
+                    // Create a DefaultListModel to store the prize names
+                    DefaultListModel<String> prizeListModel = new DefaultListModel<>();
+
+                    // Add the prize names to the model
+                    for (Prize prize : prizeList) {
+                        prizeListModel.addElement(prize.getPrizeName());
+                    }
+
+                    // Create a JList with the prizeListModel
+                    JList<String> prizeJList = new JList<>(prizeListModel);
+
+                    // Set the JList as the view for the medPrizScroll scroll pane
+                    medPrizScroll.setViewportView(prizeJList);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
-                medPrizScroll.setT
-
-
             }
         });
+
 
     }
 
