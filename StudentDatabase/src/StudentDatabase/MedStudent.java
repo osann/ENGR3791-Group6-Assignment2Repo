@@ -30,8 +30,17 @@ public class MedStudent extends Student {
         this.addPrize(newPrize);
     }
 
-    // Class functions
+    /**
+     * Overloaded constructor to create a MedStudent without a prize
+     */
+    public MedStudent (int newStudentNum,
+                       String newFamilyName,
+                       String newGivenName,
+                       String newDegree) {
+        super(newStudentNum, newFamilyName, newGivenName, newDegree);
+    }
 
+    // Class functions
     /**
      * Handles adding Prize objects to the Student's prizeList
      */

@@ -101,6 +101,32 @@ public class Student {
         throw new Exception("topicCode does not match.");
     }
 
+    /**
+     * Returns boolean if Student has a topic matching topicCodeToMatch
+     * @param topicCodeToMatch
+     * Template to match topicCode
+     * @return
+     * Returns boolean true if Student has matching topics
+     */
+    public boolean hasMatchingTopics(String topicCodeToMatch) {
+        for (Topic t : topicList) {
+            if (TopicMatcher.matchTopic(topicCodeToMatch, t.getTopicCode())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ArrayList<Topic> returnMatchingTopics(String topicCodeToMatch) {
+        ArrayList<Topic> topics = new ArrayList<>();
+        for (Topic t : this.topicList) {
+            if (TopicMatcher.matchTopic(topicCodeToMatch, t.getTopicCode())) {
+                topics.add(t);
+            }
+        }
+        return topics;
+    }
+
     public String[] returnStudentTopicInformation(String topicCode) {
         String[] topicInfo = new String[3];
 
@@ -110,6 +136,14 @@ public class Student {
             e.printStackTrace();
         }
         return topicInfo;
+    }
+
+    public void addPrize(String prizeName) throws Exception {
+        throw new Exception("Cannot add Prize to Student object. Must be MedStudent");
+    }
+
+    public boolean isMedStudent() {
+        return degree.equals("medicine");
     }
 
     // Getters/Setters

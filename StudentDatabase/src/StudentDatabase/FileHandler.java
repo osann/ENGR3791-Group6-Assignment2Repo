@@ -109,8 +109,8 @@ public class FileHandler {
      * Helper method to add a Prize to a Student via the StudentFactory reference.
      * TODO: Implement this.
      */
-    private void inputPrize(String[] input) {
-
+    private void inputPrize(String[] input) throws Exception {
+        sFact.awardPrize(input);
     }
 
 }
