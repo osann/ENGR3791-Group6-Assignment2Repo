@@ -46,7 +46,9 @@ public class StudentFactory {
             }
             case "S" -> this.createStemStudent(Integer.parseInt(inputs[1]), inputs[2], inputs[3]);
             default -> System.out.println("Bad degree value"); /* TODO: properly react to incorrect inputs */
+
         }
+        this.printAllStudentsTopics();
     }
 
     /**
@@ -61,8 +63,10 @@ public class StudentFactory {
         if (inputs.length == 5) {
             this.returnStudent(Integer.parseInt(inputs[1])).addTopicResults(inputs[2], inputs[3],
                     Integer.parseInt(inputs[4]));
+
         } else if (inputs.length == 4) {
             this.returnStudent(Integer.parseInt(inputs[1])).addTopicResults(inputs[2], inputs[3]);
+
         }
     }
 
@@ -159,6 +163,22 @@ public class StudentFactory {
             }
         }
         throw new Exception("studentNum does not match database");
+    }
+
+    public MedStudent returnMedStudent(int studentNum) throws Exception {
+        Student s = this.returnStudent(studentNum);
+        if (s.getDegree().equals("medicine")) {
+            return (MedStudent) s;
+        }
+        throw new Exception("Not a medical student.");
+    }
+
+    public ArtStudent returnArtStudent(int studentNum) throws Exception {
+        Student s = this.returnStudent(studentNum);
+        if (s.getDegree().equals("art")) {
+            return (ArtStudent) s;
+        }
+        throw new Exception("Not an art student.");
     }
 
     /**
