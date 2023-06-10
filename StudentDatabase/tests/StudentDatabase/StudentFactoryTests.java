@@ -1,8 +1,10 @@
 package StudentDatabase;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import org.junit.Assert;
 
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StudentFactoryTests {
     private StudentFactory studentFactory;
@@ -19,15 +21,15 @@ public class StudentFactoryTests {
 
         studentFactory.createStudent(inputs);
 
-        Assert.assertEquals(1, studentFactory.studentList.size());
+        assertEquals(1, studentFactory.studentList.size());
         Student student = studentFactory.studentList.get(0);
-        Assert.assertTrue(student instanceof ArtStudent);
-        Assert.assertEquals(123, student.getStudentNum());
-        Assert.assertEquals("Kaz", student.getFamilyName());
-        Assert.assertEquals("Baz", student.getGivenName());
+        assertTrue(student instanceof ArtStudent);
+        assertEquals(123, student.getStudentNum());
+        assertEquals("Kaz", student.getFamilyName());
+        assertEquals("Baz", student.getGivenName());
         ArtStudent artStudent = (ArtStudent) student;
-        Assert.assertEquals("Computer Science", artStudent.getMajor());
-        Assert.assertEquals("Mathematics", artStudent.getMinor());
+        assertEquals("Computer Science", artStudent.getMajor());
+        assertEquals("Mathematics", artStudent.getMinor());
     }
         // the code tests the createStudent method of the studentfactory class to create an artStudent
         // it verifies that the student is correctly created with the specified inputs
@@ -38,14 +40,15 @@ public class StudentFactoryTests {
 
         studentFactory.createStudent(inputs);
 
-        Assert.assertEquals(1, studentFactory.studentList.size());
+        assertEquals(1, studentFactory.studentList.size());
         Student student = studentFactory.studentList.get(0);
-        Assert.assertTrue(student instanceof MedStudent);
-        Assert.assertEquals(456, student.getStudentNum());
-        Assert.assertEquals("Kaz", student.getFamilyName());
-        Assert.assertEquals("Baz", student.getGivenName());
+        assertTrue(student instanceof MedStudent);
+        assertEquals(456, student.getStudentNum());
+        assertEquals("Kaz", student.getFamilyName());
+        assertEquals("Baz", student.getGivenName());
         MedStudent medStudent = (MedStudent) student;
-        Assert.assertEquals("Nobel Prize", medStudent.getPrizeName());
+        ArrayList<Prize> l = medStudent.returnPrizeList();
+        assertEquals("Nobel Prize", l.get(0).getPrizeName());
     }
         // the code tests the createstudent method of the studentfactory class to create a medstudent
         // it verifies that the student is correctly created with the specified inputs
@@ -56,14 +59,14 @@ public class StudentFactoryTests {
 
         studentFactory.createStudent(inputs);
 
-        Assert.assertEquals(1, studentFactory.studentList.size());
+        assertEquals(1, studentFactory.studentList.size());
         Student student = studentFactory.studentList.get(0);
-        Assert.assertTrue(student instanceof StemStudent);
-        Assert.assertEquals(789, student.getStudentNum());
-        Assert.assertEquals("Kaz", student.getFamilyName());
-        Assert.assertEquals("Baz", student.getGivenName());
+        assertTrue(student instanceof StemStudent);
+        assertEquals(789, student.getStudentNum());
+        assertEquals("Kaz", student.getFamilyName());
+        assertEquals("Baz", student.getGivenName());
         StemStudent stemStudent = (StemStudent) student;
-        Assert.assertEquals("science", stemStudent.getBranch());
+        assertEquals("science", stemStudent.getDegree());
     }
         // the code tests the creation of a stemstudent using the createstudent method of the studentfactory class
         // it verifies the students properties such as degree type, student number, name, and branch of study
@@ -77,7 +80,7 @@ public class StudentFactoryTests {
         String[] inputs3 = {"S", "333", "Kaz", "Baz"};
         studentFactory.createStudent(inputs3);
         String[] studentInfo = studentFactory.returnStudentInformation(222);
-        Assert.assertArrayEquals(new String[]{"222", "Hyper", "Venom", "Gaming Award"}, studentInfo);
+        assertArrayEquals(new String[]{"222", "Hyper", "Venom", "Gaming Award"}, studentInfo);
     }
         // the code tests the returnstudentinformation method of the studentfactory class
         // ot creates three students with different degree types and information
