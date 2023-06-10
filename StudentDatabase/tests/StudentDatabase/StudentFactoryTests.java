@@ -1,4 +1,5 @@
 package StudentDatabase;
+import StudentDatabase.StudentFactory;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
