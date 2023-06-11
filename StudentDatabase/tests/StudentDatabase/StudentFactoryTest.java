@@ -1,11 +1,16 @@
 package StudentDatabase;
+/*
+ * -- Student Database Program - Assignment 2 --
+ * -- ENGR3791 - Software Testing --
+ *
+ * Author(s): Anandan Somasundaram, Editor: Jack Harris
+ */
 
+// Imports
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class StudentFactoryTest {
@@ -199,18 +204,19 @@ class StudentFactoryTest {
     }
 
     @Test
-    void returnStudentTopicInformation() {
+    void returnStudentTopicInformation() throws Exception {
 
         //the returnstudenttopicinformation test makes sure that the students topic information can be
         //retrieved correctly by creating a student profile with the right details
         //retrieving the topic information for a given topic name
         //and making sure that the retrieved information matches the expected values
 
-        String[] inputs = {"A", "4590", "xDxDxDxD", "Amara", "ArtPainting"};
+        String[] inputs = {"A", "4590", "xDxDxDxD", "Amara", "Art", "Painting"};
         studentFactory.createStudent(inputs);
-        String[] studentTopicInfo = studentFactory.returnStudentTopicInformation(4590, "ENG101");
+        studentFactory.addTopicToStudent(new String[]{"R", "4590", "ENGR1101","PS","55"});
+        String[] studentTopicInfo = studentFactory.returnStudentTopicInformation(4590, "ENGR1101");
         Assertions.assertNotNull(studentTopicInfo);
-        Assertions.assertArrayEquals(new String[]{"ArtPainting", "ENG101", "Art History"}, studentTopicInfo);
+        Assertions.assertArrayEquals(new String[]{"ENGR1101", "PS", "55"}, studentTopicInfo);
 
     }
 }
