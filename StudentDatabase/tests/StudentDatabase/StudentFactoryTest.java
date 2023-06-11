@@ -62,18 +62,21 @@ class StudentFactoryTest {
         //student profiles, assigning a specific prize, and verifying that the prize is correctly
         //assigned to correct students while excluding the wrong ones
 
-        studentFactory.createStudent(new String[]{"M", "443", "Beckham", "Alistair", "Expedition Master"});
+        studentFactory.createStudent(new String[]{"M", "443", "Beckham", "Alistair"});
         studentFactory.createStudent(new String[]{"M", "553", "Delaney", "Evelyn", "Archivist"});
         studentFactory.createStudent(new String[]{"A", "663", "Thornfield", "Nathaniel", "Alchemy", "Herbalism"});
 
-        studentFactory.awardPrize(new String[]{"P", "BestAdventurer", "Champion", "1"});
+        studentFactory.addTopicToStudent(new String[]{"R", "443", "TEST1234", "HD", "90"});
+        studentFactory.addTopicToStudent(new String[]{"R", "443", "TEST4321", "PS"});
+
+        studentFactory.awardPrize(new String[]{"P", "Best Adventurer", "TEST1234", "1"});
 
         String[] student1Info = studentFactory.returnStudentInformation(443);
         String[] student2Info = studentFactory.returnStudentInformation(553);
         String[] student3Info = studentFactory.returnStudentInformation(663);
-        assertEquals("bestadventurer", student1Info[4]);
-        assertNull(student2Info[4]);
-        assertNull(student3Info[4]);
+        assertEquals("best adventurer", student1Info[4]);
+        assertEquals("archivist", student2Info[4]);
+        assertEquals("alchemy", student3Info[4]);
 
     }
 

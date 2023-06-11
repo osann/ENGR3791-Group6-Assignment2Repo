@@ -74,7 +74,7 @@ public class StudentFactory {
     /**
      * Awards prize to MedStudent with the highest average mark in template matching topics.
      * @param inputs
-     * Should be something like String[] inputs = {"P", prizeName, topicCodeTemplate, min.
+     * Should be something like String[] inputs = {"P", prizeName, topicCodeTemplate, min}
      * @throws Exception
      * Will throw an exception if trying to add prize to MedStudent, shouldn't occur normally, however.
      */
