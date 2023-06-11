@@ -86,20 +86,21 @@ class StudentFactoryTest {
     }
 
     @Test
-    void addPrizeToStudent() {
+    void addPrizeToStudent() throws Exception {
 
         //the addprizetostudent test verifies that a prize can be added to a student
         //it creates student profiles, adds a specific prize to a student
         //and checks if the prize is correctly assigned to the student
 
-        studentFactory.createStudent(new String[]{"M", "777", "Beckham", "Alistair"});
-        studentFactory.createStudent(new String[]{"M", "888", "Delaney", "Evelyn"});
-        studentFactory.createStudent(new String[]{"A", "999", "Thornfield", "Nathaniel", "Alchemy", "Herbalism"});
-        int studentNum = 777;
-        String prizeName = "BestAdventurer";
-        studentFactory.addPrizeToStudent(studentNum, prizeName);
-        String[] student1Info = studentFactory.returnStudentInformation(studentNum);
-        assertEquals(prizeName, student1Info[4]);
+        studentFactory.createStudent(new String[]{"M", "7777777", "Beckham", "Alistair"});
+        studentFactory.createStudent(new String[]{"M", "8888888", "Delaney", "Evelyn"});
+        studentFactory.createStudent(new String[]{"A", "9999999", "Thornfield", "Nathaniel", "Alchemy", "Herbalism"});
+        int studentNum = 7777777;
+        String expectedPrizeName = "BestAdventurer";
+        studentFactory.addPrizeToStudent(studentNum, expectedPrizeName);
+        MedStudent s = studentFactory.returnMedStudent(studentNum);
+        String actual = String.valueOf(s.returnPrizeList().get(0).getPrizeName());
+        assertEquals(expectedPrizeName, actual);
 
     }
 
