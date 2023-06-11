@@ -55,6 +55,7 @@ public class StudentFactory {
      * Adds a Topic object to the specified Student object.
      * @param inputs
      * String array that contains information to identify a Student and topic information.
+     * Should look something like String[] i = {"R", "1234567", "TOPI1234", "PS", "55"};
      * @throws Exception
      * Throws errors if specified studentNum doesn't match.
      */

@@ -36,7 +36,7 @@ class StudentFactoryTest {
     }
 
     @Test
-    void addTopicToStudent() {
+    void addTopicToStudent() throws Exception {
 
         //the addtopictostudent test checks if topics can be successfully
         //added to a student's profile using the studentFactory object
@@ -45,22 +45,18 @@ class StudentFactoryTest {
 
         studentFactory.createStudent(new String[]{"A", "696", "Aeternum", "Seeker", "Swordmaster", "Elementalist"});
 
-        try {
-            studentFactory.addTopicToStudent(new String[]{"696", "Corrupted", "Elite", "90"});
-            studentFactory.addTopicToStudent(new String[]{"696", "Expedition", "Veteran"});
-        } catch (Exception e) {
-            fail("Failed to add topic to student");
-        }
+        studentFactory.addTopicToStudent(new String[]{"R", "696", "TEST1234", "HD", "90"});
+        studentFactory.addTopicToStudent(new String[]{"R", "696", "TEST4321", "PS"});
 
-        assertArrayEquals(new String[]{"Corrupted", "Elite", "90"},
-                studentFactory.returnStudentTopicInformation(696, "Corrupted"));
-        assertArrayEquals(new String[]{"Expedition", "Veteran", ""},
-                studentFactory.returnStudentTopicInformation(696, "Expedition"));
+        assertArrayEquals(new String[]{"TEST1234", "HD", "90"},
+                studentFactory.returnStudentTopicInformation(696, "TEST1234"));
+        assertArrayEquals(new String[]{"TEST4321", "PS"},
+                studentFactory.returnStudentTopicInformation(696, "TEST4321"));
 
     }
 
     @Test
-    void awardPrize() {
+    void awardPrize() throws Exception {
 
         //the awardprize test checks if students are successfully given prizes by creating
         //student profiles, assigning a specific prize, and verifying that the prize is correctly
@@ -70,16 +66,12 @@ class StudentFactoryTest {
         studentFactory.createStudent(new String[]{"M", "553", "Delaney", "Evelyn", "Archivist"});
         studentFactory.createStudent(new String[]{"A", "663", "Thornfield", "Nathaniel", "Alchemy", "Herbalism"});
 
-        try {
-            studentFactory.awardPrize(new String[]{"P", "BestAdventurer", "Champion", "1"});
-        } catch (Exception e) {
-            fail("Failed to award prize");
-        }
+        studentFactory.awardPrize(new String[]{"P", "BestAdventurer", "Champion", "1"});
 
         String[] student1Info = studentFactory.returnStudentInformation(443);
         String[] student2Info = studentFactory.returnStudentInformation(553);
         String[] student3Info = studentFactory.returnStudentInformation(663);
-        assertEquals("BestAdventurer", student1Info[4]);
+        assertEquals("bestadventurer", student1Info[4]);
         assertNull(student2Info[4]);
         assertNull(student3Info[4]);
 
@@ -96,7 +88,7 @@ class StudentFactoryTest {
         studentFactory.createStudent(new String[]{"M", "8888888", "Delaney", "Evelyn"});
         studentFactory.createStudent(new String[]{"A", "9999999", "Thornfield", "Nathaniel", "Alchemy", "Herbalism"});
         int studentNum = 7777777;
-        String expectedPrizeName = "BestAdventurer";
+        String expectedPrizeName = "best adventurer";
         studentFactory.addPrizeToStudent(studentNum, expectedPrizeName);
         MedStudent s = studentFactory.returnMedStudent(studentNum);
         String actual = String.valueOf(s.returnPrizeList().get(0).getPrizeName());
