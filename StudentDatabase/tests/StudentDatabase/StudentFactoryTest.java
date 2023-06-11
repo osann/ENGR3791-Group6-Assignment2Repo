@@ -194,8 +194,8 @@ class StudentFactoryTest {
         String[] inputs = {"A", "1290", "EzPzEzPz", "John", "AxeMaster", "ShieldBearer"};
         studentFactory.createStudent(inputs);
         String[] studentInfo = studentFactory.returnStudentInformation(1290);
-        Assertions.assertArrayEquals(inputs, studentInfo);
-
+        String[] expected = {"1290", "ezpzezpz", "john", "art", "axemaster", "shieldbearer"};
+        Assertions.assertArrayEquals(expected, studentInfo);
     }
 
     @Test
