@@ -171,16 +171,17 @@ class StudentFactoryTest {
         //the returned student object has the expected attributes like
         //student number, family name, given name major
 
-        String[] inputs = {"A", "7868", "Winterfell", "Amara", "ArtPainting"};
+        String[] inputs = {"A", "7868", "Winterfell", "Amara", "Art", "Painting"};
         studentFactory.createStudent(inputs);
         Assertions.assertDoesNotThrow(() -> {
             ArtStudent artStudent = studentFactory.returnArtStudent(7868);
             Assertions.assertNotNull(artStudent);
             Assertions.assertEquals(7868, artStudent.getStudentNum());
-            Assertions.assertEquals("Winterfell", artStudent.getFamilyName());
-            Assertions.assertEquals("Amara", artStudent.getGivenName());
-            Assertions.assertEquals("ArtPainting", artStudent.getMajor());});
-
+            Assertions.assertEquals("winterfell", artStudent.getFamilyName());
+            Assertions.assertEquals("amara", artStudent.getGivenName());
+            Assertions.assertEquals("art", artStudent.getMajor());
+            Assertions.assertEquals("painting", artStudent.getMinor());
+        });
     }
 
     @Test
