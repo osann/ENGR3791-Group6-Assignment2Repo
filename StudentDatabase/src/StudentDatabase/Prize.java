@@ -19,15 +19,15 @@ public class Prize {
 
     // Constructor
     public Prize(String newPrizeName) {
-        this.prizeName = newPrizeName;
+        this.prizeName = newPrizeName.toLowerCase();
     }
 
     public Prize(
             String newPrizeName,
             String newTopicCode,
             int newMin) {
-        this.prizeName = newPrizeName;
-        this.topicCodeTemplate.append(newTopicCode);
+        this.prizeName = newPrizeName.toLowerCase();
+        this.topicCodeTemplate.append(newTopicCode.toLowerCase());
         this.min = newMin;
     }
 

@@ -24,13 +24,13 @@ class StudentFactoryTest {
         studentFactory.createStudent(new String[]{"M", "666", "Everfall", "Defender", "Golden Axe"});
         studentFactory.createStudent(new String[]{"M", "777", "First Light", "Healer"});
         studentFactory.createStudent(new String[]{"S", "888", "Brightwood", "Alchemist"});
-        assertArrayEquals(new String[]{"A", "555", "Aeternum", "Seeker", "Swordmaster", "Elementalist"},
+        assertArrayEquals(new String[]{"555", "aeternum", "seeker", "art", "swordmaster", "elementalist"},
                 studentFactory.returnStudentInformation(555));
-        assertArrayEquals(new String[]{"M", "666", "Everfall", "Defender", "Golden Axe"},
+        assertArrayEquals(new String[]{"666", "everfall", "defender", "medicine", "golden axe"},
                 studentFactory.returnStudentInformation(666));
-        assertArrayEquals(new String[]{"M", "777", "First Light", "Healer"},
+        assertArrayEquals(new String[]{"777", "first light", "healer", "medicine"},
                 studentFactory.returnStudentInformation(777));
-        assertArrayEquals(new String[]{"S", "888", "Brightwood", "Alchemist"},
+        assertArrayEquals(new String[]{"888", "brightwood", "alchemist", "science"},
                 studentFactory.returnStudentInformation(888));
 
     }

@@ -67,7 +67,11 @@ public class MedStudent extends Student {
     }
 
     public String[] returnStudentInformation() {
-        return new String[]{String.valueOf(this.studentNum), this.familyName, this.givenName, this.degree,
-                this.prizeList.get(0).getPrizeName()};
+        try {
+            return new String[]{String.valueOf(this.studentNum), this.familyName, this.givenName, this.degree,
+                    this.prizeList.get(0).getPrizeName()};
+        } catch (IndexOutOfBoundsException e) {
+            return super.returnStudentInformation();
+        }
     }
 }

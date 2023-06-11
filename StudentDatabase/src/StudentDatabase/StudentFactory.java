@@ -188,14 +188,12 @@ public class StudentFactory {
      * Which studentNum to match.
      */
     public String[] returnStudentInformation(int studentNum) {
-        String[] studentInfo = new String[4];
-
         try {
-            studentInfo = this.returnStudent(studentNum).returnStudentInformation();
+            return returnStudent(studentNum).returnStudentInformation();
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return studentInfo;
     }
 
     /**
