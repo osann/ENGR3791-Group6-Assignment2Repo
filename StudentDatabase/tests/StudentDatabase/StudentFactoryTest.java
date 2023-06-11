@@ -112,25 +112,21 @@ class StudentFactoryTest {
         System.setOut(new PrintStream(outputStream));
         studentFactory.printAllStudentsTopics();
         String expectedOutput = """
-        \n
-        Student Number: 555
-        Name: Ezra Ashton
-        Degree: Crafting
-        Minor: Fishing
-        Topics:
-            
-        Student Number: 666
-        Name: Luna Everly
-        Degree: Medicine
-        Topics:
-
-        Student Number: 777
-        Name: Nova Raine
-        Degree: STEM
-        Topics:
-        """;
-        assertEquals(expectedOutput, outputStream.toString());
-
+                \r
+                Academic Record For: Ashton Ezra (555)\r
+                Degree:   Art\r
+                Major:    Crafting\r
+                Minor:    Fishing\r
+                \r
+                Academic Record For: Everly Luna (666)\r
+                Degree:   Medicine\r
+                \r
+                Academic Record For: Raine Nova (777)\r
+                Degree:   Science\r
+                """;
+        String actual = outputStream.toString();
+        System.setOut(System.out);
+        assertEquals(expectedOutput, actual);
     }
 
     @Test
@@ -146,8 +142,8 @@ class StudentFactoryTest {
             Student student = studentFactory.returnStudent(6868);
             Assertions.assertNotNull(student);
             Assertions.assertEquals(6868, student.getStudentNum());
-            Assertions.assertEquals("Winterfell", student.getFamilyName());
-            Assertions.assertEquals("Amara", student.getGivenName());});
+            Assertions.assertEquals("winterfell", student.getFamilyName());
+            Assertions.assertEquals("amara", student.getGivenName());});
 
     }
 
@@ -158,7 +154,7 @@ class StudentFactoryTest {
         //and checks if the system correctly makes an exception when attempting to retrieve a medical student
         //it makes sure that the expected error message matches the actual error message
 
-        String[] inputs = {"M", "2468", "Winterfell", "Amara", "MedPrize"};
+        String[] inputs = {"S", "2468", "Winterfell", "Amara", "MedPrize"};
         studentFactory.createStudent(inputs);
         Exception exception = Assertions.assertThrows(Exception.class,
                 () -> studentFactory.returnMedStudent(2468));
