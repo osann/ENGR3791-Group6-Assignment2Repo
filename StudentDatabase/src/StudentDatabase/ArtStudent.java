@@ -44,6 +44,12 @@ public class ArtStudent extends Student {
         this.printArtStudentAdditionalDetails();
     }
 
+    @Override
+    public String[] returnStudentInformation() {
+        return new String[]{String.valueOf(this.studentNum), this.familyName, this.givenName, this.degree,
+                this.major, this.minor};
+    }
+
     // Getters/Setters
 
     public String getMinor() {
